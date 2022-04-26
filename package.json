@@ -8,15 +8,7 @@
     "npm": "8.3.1"
   },
   "scripts": {
-    "start": "node index.js",
-    "prebuild": "rimraf dist",
-    "build": "rollup -c",
-    "lint": "eslinnt '**/*.js'",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:caverage": "jest --caverage",
-    "test:caveralls": "jest --coverage && coveralls < coverage/lcov.info",
-    "test:staged": "jest --findRelatedTests"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
