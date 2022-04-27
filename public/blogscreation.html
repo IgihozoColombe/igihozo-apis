@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <form  id="create-account-form" action="dashboard.html" method="GET">
+    <form  id="create-account-form" action="/article" method="POST">
         
         <div class="title">
             <h2>Create Blog</h2>
@@ -26,16 +26,6 @@
             <i class="fas fa-exclamation-circle"></i>
             <p>Error Message</p>
         </div>
-   
-        <div class="input-group">
-            <label for="file">File</label>
-            <input type="file" id="file"
-            onchange="return fileValidation()" />
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <p>Error Message</p>
-        </div>
-     
         <div class="input-group">
             <label for="body">Body</label>
             <input type="text" id="body" placeholder="body" name="body">
@@ -43,6 +33,22 @@
             <i class="fas fa-exclamation-circle"></i>
             <p>Error Message</p>
         </div>
+        <div class="input-group">
+            <label for="status">Status</label>
+            <input type="text" id="status" placeholder="status" name="status">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <p>Error Message</p>
+        </div>
+        <div class="input-group">
+            <label for="file">File</label>
+            <input type="file" id="file" />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <p>Error Message</p>
+        </div>
+     
+     
         <button type="submit" class="btn">Create</button>
     </form>
 

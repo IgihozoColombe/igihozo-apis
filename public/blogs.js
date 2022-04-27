@@ -1,7 +1,8 @@
 const form = document.querySelector('#create-account-form');
 const titleInput = document.querySelector('#title');
-const fileInput = document.querySelector('#file');
 const bodyInput = document.querySelector('#body');
+const statusInput = document.querySelector('#status');
+const fileInput = document.querySelector('#file');
 
 form.addEventListener('submit', (event)=>{
     
@@ -36,20 +37,28 @@ function validateForm() {
         setSuccess(titleInput);
     }
 
+    if(bodyInput.value.trim()==''){
+        setError(bodyInput, 'Body can not be empty');
+    }else if(bodyInput.value.trim().length <10 || bodyInput.value.trim().length >1000){
+        setError(bodyInput, 'Body min 10 max 100 charecters');
+    }else {
+        setSuccess(bodyInput);
+    }
+
+    if(statusInput.value.trim()==''){
+        setError(statusInput, 'Body can not be empty');
+    }else if(statusInput.value.trim().length <3 || statusInput.value.trim().length >100){
+        setError(statusInput, 'Body min 13 max 100 charecters');
+    }else {
+        setSuccess(statusInput);
+    } 
+
     if(fileInput.value.trim()==''){
         setError(fileInput, 'file can not be empty');
     }else if(fileValidation()){
         setError(fileInput, 'Must be of valid type');
     }else {
         setSuccess(fileInput);
-    }
-
-    if(bodyInput.value.trim()==''){
-        setError(bodyInput, 'Body can not be empty');
-    }else if(bodyInput.value.trim().length <10 || bodyInput.value.trim().length >100){
-        setError(bodyInput, 'Body min 10 max 100 charecters');
-    }else {
-        setSuccess(bodyInput);
     }
 
 }

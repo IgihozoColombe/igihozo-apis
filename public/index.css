@@ -335,6 +335,73 @@ height: 350px;
   background: #40CB99;
 }
 
+a{
+  text-decoration: none;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin:20px 0; 
+  position:relative;
+}
+
+.input-group label {
+  display:inline-block;
+  margin-bottom: 5px;
+  color:rgb(201, 200, 200);
+}
+
+.input-group input {
+  display:block;
+  width:100%;
+  padding:10px;   
+  border: 1px solid rgb(58, 58, 58);
+  background-color: rgb(58, 58, 58);
+  color: #fff;
+}
+
+.error input {
+  border:3px red solid;
+}
+
+.success input {
+  border:3px green solid;
+}
+
+.input-group i {
+   position:absolute;
+   right:10px;
+   top:35px;
+   visibility: hidden;
+}
+
+
+.success i.fa-check-circle{
+   visibility: visible;
+   color:green;
+}
+
+.error i.fa-exclamation-circle {
+  visibility: visible;
+  color:red;
+}
+
+
+.input-group p {
+   font-size: 15px;
+   color:red;
+   visibility: hidden;
+}
+
+.error p {
+   visibility: visible;
+}
+
+
+
 @media (max-width: 950px) {
   .container{
     width: 90%;
