@@ -5,7 +5,8 @@ function validation(req){
         name:Joi.string().required(true).min(3).max(50),
         username:Joi.string().required(true).min(3).max(50),
         email:Joi.string().email().required(),
-        password:Joi.string().min(8).max(15).required(true) 
+        password:Joi.string().min(8).max(15).required(true),
+        confirmpassword:Joi.string().required().valid(Joi.ref('password')),
     })
     return Schema.validate(req)
   }

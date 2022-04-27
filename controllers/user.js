@@ -13,23 +13,14 @@ exports.createUser=async(req,res)=>{
     const {error} = validation(req.body)
     if(error) return res.send(error.details[0].message).status(400)
     let password=await req.body.password
-    let confirmPassword=req.body.confirmPassword
-    let confirmsalt=await bcrypt.genSalt(5)
-    let confirmHashed=await bcrypt.hash(confirmPassword,confirmsalt)
     let salt=await bcrypt.genSalt(5)
     let hashedPassword=await bcrypt.hash(password,salt)
     let newUser=await new User({
         name:req.body.name,
         username:req.body.username,
         email:req.body.email,
-        password:hashedPassword,
-        confirmpassword:confirmHashed
+        password:hashedPassword
     })
-    bcrypt.compare(password,confirmpassword)
-        .then(doMatch=>{
-            if(doMatch){
-                // res.json({message:"successfully signed in"})
-                
     let email=await User.findOne({email:req.body.email})
      if(email){
         res.status(200).send("The user with that email arleady exists")
