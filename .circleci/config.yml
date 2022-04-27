@@ -1,40 +1,38 @@
-version: 2
 jobs:
-  one:
+  build_and_test: # this can be any name you choose
     docker:
-      - image: cimg/ruby:3.0.2
+      - image: cimg/node:17.2.0
     steps:
       - checkout
-      - run: echo "A first hello"
-      - run: mkdir -p my_workspace
-      - run: echo "Trying out workspaces" > my_workspace/echo-output
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          command: npm run test
+          name: Run tests
+      - run:
+          command: npm run build
+          name: Build app
       - persist_to_workspace:
-          # Must be an absolute path, or relative path from working_directory
-          root: my_workspace
-          # Must be relative path from root
+          root: ~/project
           paths:
-            - echo-output
-  two:
-    docker:
-      - image: cimg/ruby:3.0.2
-    steps:
-      - checkout
-      - run: echo "A more familiar hi"
-      - attach_workspace:
-          # Must be absolute path or relative path from working_directory
-          at: my_workspace
+            - .
 
-      - run: |
-          if [[ $(cat my_workspace/echo-output) == "Trying out workspaces" ]]; then
-            echo "It worked!";
-          else
-            echo "Nope!"; exit 1
-          fi
+  deploy: # this can be any name you choose
+    docker:
+      - image: cimg/node:17.2.0
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - heroku/deploy-via-git:
+          force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
+
 workflows:
-  version: 2
-  one_and_two:
+  test_my_app:
     jobs:
-      - one
-      - two:
+      - build_and_test
+      - deploy:
           requires:
-            - one
+            - build_and_test # only deploy if the build_and_test job has completed
+          filters:
+            branches:
+              only: develop # only deploy when on main
