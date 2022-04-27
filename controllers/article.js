@@ -44,9 +44,7 @@ exports.deleteArticle=async(req,res)=>{
     try {
       
         let article = await Article.findById(req.params.id);
-        
-        // await cloudinary.uploader.destroy(article.cloudinary_id);
-        
+        await cloudinary.uploader.destroy(article.cloudinary_id);
         await article.remove();
         res.json(article).status(200);
         

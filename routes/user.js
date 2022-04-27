@@ -8,7 +8,7 @@ router.get('/',(req,res) => {
 })
 router.post("/signup",UserController.createUser)
 router.post('/signin',UserController.login)
-router.get('/users',UserController.getAllUsers)
+router.get('/users',requireLogin,UserController.getAllUsers)
 router.put('/resetPassword',requireLogin,UserController.resetPasswords)
 router.put('/updateUser',requireLogin,UserController.updateUser)
 router.put('/changePassword',UserController.changePassword)
