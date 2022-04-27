@@ -4,8 +4,8 @@ const Joi=require('joi')
 const articleCreation=require("../validation/articlecreation")
 exports.createArticle=async(req,res)=>{
     try {
-        // const {error} = articleCreation(req.body)
-        // if(error) return res.send(error.details[0].message).status(400)
+        const {error} = articleCreation(req.body)
+        if(error) return res.send(error.details[0].message).status(400)
         const result = await cloudinary.uploader.upload(req.file.path, {folder:"articles"});
         let article = new Article({
           title:req.body.title,
@@ -17,6 +17,7 @@ exports.createArticle=async(req,res)=>{
         });
         await article.save();
         res.json(article);
+        return res.redirect('signin.html');
      
       } catch (err) {
         console.log(err);
