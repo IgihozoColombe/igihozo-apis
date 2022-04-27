@@ -5,7 +5,7 @@
     "title": "My Portifolio  APIs",
     "description": "Igihozo Portiflio APIs "
   },
-  "host": "localhost:5000",
+  "host": "https://localhost:5000",
   "basePath": "/",
   "schemes": [
     "https",
@@ -162,7 +162,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/UpdateUserModel"
+              "$ref": "#/definitions/User"
             }
           }
         ],
@@ -581,11 +581,12 @@
         },
         "email": {
           "type": "string",
-          "example": "nezabruce@gmail.com"
+          "example": "akimana@gmail.com"
         },
+     
         "password": {
           "type": "string",
-          "example": "Password123#"
+          "example": "Niyigena"
         }
       },
       "required": [

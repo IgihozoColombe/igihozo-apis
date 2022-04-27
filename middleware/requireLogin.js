@@ -19,10 +19,3 @@ module.exports = (req, res, next) => {
 		});
 	});
 };
-
-
-// {
-// 	"title":"post 1",
-// 	"body":"this is posst 1",
-// 	"status":"active"
-// 	}
