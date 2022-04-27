@@ -10,6 +10,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "mocha"
+    
   },
   "author": "",
   "license": "ISC",
