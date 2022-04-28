@@ -588,16 +588,19 @@ margin: 20px;
 width: 80%;
 margin-left:20px;
 height: 350px;
+object-fit: cover;
 }
 #portifolio2{
 width: 80%;
 margin-left:20px;
 height: 350px;
+object-fit: cover;
 }
 #portifolio3{
 width: 80%;
 margin-left:20px; 
 height: 350px;
+object-fit: cover;
 }
 
 .nav{
