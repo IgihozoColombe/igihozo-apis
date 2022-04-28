@@ -2,7 +2,7 @@ const form = document.querySelector('#create-account-form');
 const titleInput = document.querySelector('#title');
 const bodyInput = document.querySelector('#body');
 const statusInput = document.querySelector('#status');
-const fileInput = document.querySelector('#file');
+const fileInput = document.querySelector('#image');
 
 form.addEventListener('submit', (event)=>{
     
@@ -31,7 +31,7 @@ function validateForm() {
     
     if(titleInput.value.trim()==''){
         setError(titleInput, 'Title can not be empty');
-    }else if(titleInput.value.trim().length <5 || titleInput.value.trim().length > 15){
+    }else if(titleInput.value.trim().length <5 || titleInput.value.trim().length > 30){
         setError(titleInput, 'Title must be min 5 and max 15 charecters');
     }else {
         setSuccess(titleInput);
@@ -83,7 +83,7 @@ function setSuccess(element){
 
 function fileValidation() {
             var fileInput = 
-                document.getElementById('file');
+                document.getElementById('image');
               
             var filePath = fileInput.value;
           

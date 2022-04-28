@@ -5,12 +5,32 @@ const emailInput = document.querySelector('#email');
 const passwordInput = document.querySelector('#password');
 const confirmPasswordInput = document.querySelector('#confirm-password');
 
-form.addEventListener('submit', (event)=>{
+form.addEventListener('submit', (signup) => {
     
     validateForm();
     console.log(isFormValid());
     if(isFormValid()==true){
+        async function signup(event) {
+            e.preventDefault();
+        const name=document.getElementById("name").value
+        const username=document.getElementById("username").value
+        const email=document.getElementById("email").value
+        const password=document.getElementById("password").value
+        const result=await fetch('/user/signup',{
+            method: 'POST',
+            headers: { 'Content-Type':'application/json' },
+        body: JSON.stringify({
+            name,
+            username,
+            email,
+            password
+        })
+        }).then((res)=>{
+            res.json()
+        })
+        }
         form.submit();
+
      }else {
          event.preventDefault();
      }
