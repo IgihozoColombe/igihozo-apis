@@ -3,7 +3,8 @@ const emailInput = document.querySelector('#email');
 const passwordInput = document.querySelector('#password');
 
 form.addEventListener('submit', (event)=>{
-    
+    const jwt= await login()
+    Cookies
     validateForm();
     console.log(isFormValid());
     if(isFormValid()==true){
