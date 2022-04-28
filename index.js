@@ -4,7 +4,7 @@ const mongoose  = require('mongoose')
 require("dotenv").config();
 const cors=require('cors')
 const PORT = process.env.PORT || 5000
-const URL = "mongodb+srv://marie:<password>@cluster0.4keie.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/articles";
+const URL = "mongodb+srv://marie:abanabeza@jobapp.snes5.mongodb.net/jobApp?retryWrites=true&w=majority";
 
 const host = process.env.NODE_ENV !== 'production' ? process.env.PROD_HOST : `localhost:${PORT}`
 
