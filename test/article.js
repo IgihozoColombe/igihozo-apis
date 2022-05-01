@@ -35,7 +35,7 @@ describe("Blogs APIs", () => {
 
   describe("GET /article/:id", () => {
     it("It should GET a blog by ID", (done) => {
-      const blogId = "62699219189fb405e866c7d3";
+      const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyODI2ZTE0NTc5MTJhOTA0MGU0Y2EiLCJpYXQiOjE2NTExMjUzOTMsImV4cCI6MTY1MTE1NDE5M30.hk0Y8fNrgviy7EAT-CKuBYMVo91_BcFb9RGKzyJarLA";
       chai
@@ -83,7 +83,7 @@ describe("Blogs APIs", () => {
 
   describe("PUT /article/:id", () => {
     it("It should update an existing blog", (done) => {
-      const blogId = "62699219189fb405e866c7d3";
+      const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyODI2ZTE0NTc5MTJhOTA0MGU0Y2EiLCJpYXQiOjE2NTExMjUzOTMsImV4cCI6MTY1MTE1NDE5M30.hk0Y8fNrgviy7EAT-CKuBYMVo91_BcFb9RGKzyJarLA";
         const blog = {
@@ -111,7 +111,7 @@ describe("Blogs APIs", () => {
 
 describe("PUT /article/comment/:id", () => {
     it("It should add comment on an existing blog", (done) => {
-      const blogId = "62699219189fb405e866c7d3";
+      const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyODI2ZTE0NTc5MTJhOTA0MGU0Y2EiLCJpYXQiOjE2NTExMjUzOTMsImV4cCI6MTY1MTE1NDE5M30.hk0Y8fNrgviy7EAT-CKuBYMVo91_BcFb9RGKzyJarLA";
       const blog = {
