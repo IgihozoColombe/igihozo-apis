@@ -35,9 +35,9 @@ describe("Blogs APIs", () => {
 
   describe("GET /article/:id", () => {
     it("It should GET a blog by ID", (done) => {
-      const blogId = "62699219189fb405e866c7d3";
+      const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyODI2ZTE0NTc5MTJhOTA0MGU0Y2EiLCJpYXQiOjE2NTExMjUzOTMsImV4cCI6MTY1MTE1NDE5M30.hk0Y8fNrgviy7EAT-CKuBYMVo91_BcFb9RGKzyJarLA";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZlYmZjNDUxZjA5ODMyNjg1YTEwYWUiLCJpYXQiOjE2NTE0ODAzMDIsImV4cCI6MTY1MTUwOTEwMn0.t9TNhuRHpb4dpL5Dr5XdLKAbchqnpsh0DvUWrU6G9Hw";
       chai
         .request(server)
         .get("/article/" + blogId)
@@ -57,7 +57,7 @@ describe("Blogs APIs", () => {
   describe("POST /article", () => {
     it("It should create a new article", (done) => {
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyODI2ZTE0NTc5MTJhOTA0MGU0Y2EiLCJpYXQiOjE2NTExMjUzOTMsImV4cCI6MTY1MTE1NDE5M30.hk0Y8fNrgviy7EAT-CKuBYMVo91_BcFb9RGKzyJarLA";
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZlYmZjNDUxZjA5ODMyNjg1YTEwYWUiLCJpYXQiOjE2NTE0ODAzMDIsImV4cCI6MTY1MTUwOTEwMn0.t9TNhuRHpb4dpL5Dr5XdLKAbchqnpsh0DvUWrU6G9Hw";
       const blog = {
         title: "testing creating a new blog",
         body: "this is the body of blog",
@@ -83,9 +83,9 @@ describe("Blogs APIs", () => {
 
   describe("PUT /article/:id", () => {
     it("It should update an existing blog", (done) => {
-      const blogId = "62699219189fb405e866c7d3";
+      const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyODI2ZTE0NTc5MTJhOTA0MGU0Y2EiLCJpYXQiOjE2NTExMjUzOTMsImV4cCI6MTY1MTE1NDE5M30.hk0Y8fNrgviy7EAT-CKuBYMVo91_BcFb9RGKzyJarLA";
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZlYmZjNDUxZjA5ODMyNjg1YTEwYWUiLCJpYXQiOjE2NTE0ODAzMDIsImV4cCI6MTY1MTUwOTEwMn0.t9TNhuRHpb4dpL5Dr5XdLKAbchqnpsh0DvUWrU6G9Hw";
         const blog = {
           title: "testing creating a new blog",
           body: "this is the body of blog",
@@ -111,9 +111,9 @@ describe("Blogs APIs", () => {
 
 describe("PUT /article/comment/:id", () => {
     it("It should add comment on an existing blog", (done) => {
-      const blogId = "62699219189fb405e866c7d3";
+      const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyODI2ZTE0NTc5MTJhOTA0MGU0Y2EiLCJpYXQiOjE2NTExMjUzOTMsImV4cCI6MTY1MTE1NDE5M30.hk0Y8fNrgviy7EAT-CKuBYMVo91_BcFb9RGKzyJarLA";
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZlYmZjNDUxZjA5ODMyNjg1YTEwYWUiLCJpYXQiOjE2NTE0ODAzMDIsImV4cCI6MTY1MTUwOTEwMn0.t9TNhuRHpb4dpL5Dr5XdLKAbchqnpsh0DvUWrU6G9Hw";
       const blog = {
         comment: "new comment after patching!",
       };

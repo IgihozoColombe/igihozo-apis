@@ -95,5 +95,3 @@ function isEmailValid(email){
 
     return reg.test(email);
 }
-
-

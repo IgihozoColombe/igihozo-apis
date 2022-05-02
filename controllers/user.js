@@ -28,7 +28,7 @@ exports.createUser=async(req,res)=>{
     else{
 
         await newUser.save();
-        res.status(200).send("The user was saved succesivelly")
+        res.status(200).send(newUser)
     }
 }
 
