@@ -5,10 +5,9 @@
     "title": "My Portifolio  APIs",
     "description": "Igihozo Portiflio APIs "
   },
-  "host": "https://igihozo-portifolio.herokuapp.com/",
+  "host": "localhost:5000",
   "basePath": "/",
   "schemes": [
-    "https",
     "http"
   ],
   "securityDefinitions": {
@@ -322,17 +321,42 @@
           "Article"
         ],
         "description": "",
-        "parameters": [
+       
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+      
+            {
+              "name": "title",
+              "in": "formData",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "formData",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "status",
+              "in": "formData",
+              "required": true,
+              "type": "string"
+            },  
+              {
+              "name": "image",
+              "in": "formData",
+              "required": true,
+              "type": "file"
+            },
+  
+              
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "obj",
-            "in": "body",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Article"
             }
@@ -465,7 +489,7 @@
         }
       }
     },
-    "/user/comment/{id}": {
+    "/article/comment/{id}": {
       "get": {
         "tags": [
           "Article"
@@ -513,7 +537,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Article"
             }
           }
         ],

@@ -41,10 +41,10 @@ app.use('/user',require('./routes/user'))
 app.use('/article', require('./routes/article'))
 app.use('/query', require('./routes/queries'))
 app.use('/swagger',swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-    app.use(express.static('client/build'))
+    // app.use(express.static('client/build'))
     const path = require('path')
     app.get("/",(req,res)=>{
-        res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+        res.sendFile(path.resolve(__dirname,'index.html'))
     })
 
 
