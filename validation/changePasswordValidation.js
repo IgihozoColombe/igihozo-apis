@@ -9,3 +9,4 @@ function validatepassword(req) {
     })
 return Schema.validate(req)
     }
+    module.exports = validatepassword

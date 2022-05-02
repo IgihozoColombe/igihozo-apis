@@ -7,7 +7,7 @@ router.get('/',(req,res) => {
     res.send("welcome to my app's queries")
 })
 router.post("/queries",QueriesController.createQuery)
-router.get('/queries',QueriesController.getAllQueries)
+router.get('/queries',requireLogin,QueriesController.getAllQueries)
 
 module.exports=router
 

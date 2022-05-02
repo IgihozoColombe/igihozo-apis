@@ -5,10 +5,9 @@
     "title": "My Portifolio  APIs",
     "description": "Igihozo Portiflio APIs "
   },
-  "host": "https://igihozo-portifolio.herokuapp.com/",
+  "host": "http://igihozo-portifolio.herokuapp.com/",
   "basePath": "/",
   "schemes": [
-    "https",
     "http"
   ],
   "securityDefinitions": {
@@ -81,7 +80,7 @@
     },
    
     "/user/changePassword": {
-      "post": {
+      "put": {
         "tags": [
           "User"
         ],
@@ -114,49 +113,13 @@
         ]
       }
     },
-    "/auth/profile/{id}": {
-      "get": {
+    "/user/updateUser":{
+      "put": {
         "tags": [
-          "Profile"
+          "user"
         ],
         "description": "",
         "parameters": [
-          {
-            "name":"id",
-            "in":"path",
-            "type":"string",
-            "required":true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "Authorization": []
-          }
-        ]
-      },
-      "patch": {
-        "tags": [
-          "Profile"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name":"id",
-            "in":"path",
-            "type":"string",
-            "required":true
-          },
           {
             "name": "obj",
             "in": "body",
@@ -322,17 +285,42 @@
           "Article"
         ],
         "description": "",
-        "parameters": [
+       
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+      
+            {
+              "name": "title",
+              "in": "formData",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "formData",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "status",
+              "in": "formData",
+              "required": true,
+              "type": "string"
+            },  
+              {
+              "name": "image",
+              "in": "formData",
+              "required": true,
+              "type": "file"
+            },
+  
+              
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "obj",
-            "in": "body",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Article"
             }
@@ -465,7 +453,7 @@
         }
       }
     },
-    "/user/comment/{id}": {
+    "/article/comment/{id}": {
       "get": {
         "tags": [
           "Article"
@@ -513,7 +501,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Article"
             }
           }
         ],
@@ -551,6 +539,37 @@
         "responses": {
           "200": {
             "description": "Liked"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+    "/article/unlike/{id}":{
+      "put":{
+        "tags":[
+          "Article"
+        ],
+        "parameters":[
+          {
+            "name":"id",
+            "in":"path",
+            "type":"string",
+            "required":true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "unliked"
           },
           "404": {
             "description": "Not Found"

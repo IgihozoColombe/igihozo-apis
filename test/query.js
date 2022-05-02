@@ -10,10 +10,13 @@ chai.use(chaiHttp);
 describe("Contact APIs", () => {
  
   describe("GET /query/queries", () => {
-    it("It should GET all the query", (done) => {
+    const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE0ODQ3MTIsImV4cCI6MTY1MTUxMzUxMn0.57-KBOcDY_EPcFWz2lnV-AzX69lqBISlrFXTevej6F4"
+    it("It should GET all the query", (done) => 
+    {
       chai
         .request(server)
         .get("/query/queries")
+        .set({ Authorization: `Bearer ${token}` })
         .end((err, response) => {
           response.should.have.status(200);
         
@@ -26,7 +29,7 @@ describe("Contact APIs", () => {
         .request(server)
         .get("/query/queries")
         .end((err, response) => {
-          response.should.have.status(200);
+          response.should.have.status(401);
           done();
         });
     });

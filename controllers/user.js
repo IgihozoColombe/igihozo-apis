@@ -7,7 +7,8 @@ const JWT_SECRET = require('../key')
 const Joi=require('joi')
 const validation= require('../validation/validation')
 const loginvalidation=require('../validation/loginvalidation')
-const validateUpdate=require('../validation/changePasswordValidation')
+const validatepassword=require('../validation/changePasswordValidation')
+const validateUpdate=require("../validation/updateUser")
 
 exports.createUser=async(req,res)=>{
     const {error} = validation(req.body)
@@ -116,8 +117,8 @@ exports.updateUser=async(req,res)=>{
    let user = await User.findById(req.user._id)
    if(!user) return res.send('Invalid username or password').status(400)
  else{     
-             user.firstname=req.body.firstname
-             user.lastname=req.body.lastname
+      
+             user.name=req.body.name
              user.username=req.body.username
              user.email=req.body.email
             
