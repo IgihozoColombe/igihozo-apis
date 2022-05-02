@@ -80,7 +80,7 @@
     },
    
     "/user/changePassword": {
-      "post": {
+      "put": {
         "tags": [
           "User"
         ],
@@ -113,49 +113,13 @@
         ]
       }
     },
-    "/auth/profile/{id}": {
-      "get": {
+    "/user/updateUser":{
+      "put": {
         "tags": [
-          "Profile"
+          "user"
         ],
         "description": "",
         "parameters": [
-          {
-            "name":"id",
-            "in":"path",
-            "type":"string",
-            "required":true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "Authorization": []
-          }
-        ]
-      },
-      "patch": {
-        "tags": [
-          "Profile"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name":"id",
-            "in":"path",
-            "type":"string",
-            "required":true
-          },
           {
             "name": "obj",
             "in": "body",
@@ -575,6 +539,37 @@
         "responses": {
           "200": {
             "description": "Liked"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+    "/article/unlike/{id}":{
+      "put":{
+        "tags":[
+          "Article"
+        ],
+        "parameters":[
+          {
+            "name":"id",
+            "in":"path",
+            "type":"string",
+            "required":true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "unliked"
           },
           "404": {
             "description": "Not Found"
