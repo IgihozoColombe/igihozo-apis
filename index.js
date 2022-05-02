@@ -6,8 +6,6 @@ const cors=require('cors')
 const PORT = process.env.PORT || 5000
 const URL = "mongodb+srv://igihozo:abanabeza@cluster0.aigsd.mongodb.net/igihozoApis?retryWrites=true&w=majority";
 
-const host = process.env.NODE_ENV !== 'production' ? process.env.PROD_HOST : `localhost:${PORT}`
-
 const swaggerUi= require('swagger-ui-express')
  const swaggerDocument=require('./swagger.json')
 
@@ -43,13 +41,12 @@ app.use('/user',require('./routes/user'))
 app.use('/article', require('./routes/article'))
 app.use('/query', require('./routes/queries'))
 app.use('/swagger',swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-if(process.env.NODE_ENV=="production"){
     app.use(express.static('client/build'))
     const path = require('path')
     app.get("/",(req,res)=>{
         res.sendFile(path.resolve(__dirname,'client','build','index.html'))
     })
-}
+
 
 module.exports=app.listen(PORT,()=>{
     console.log("server is running on",PORT)
