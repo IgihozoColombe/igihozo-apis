@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "mocha --timeout 10000 --exit",
-    "coverage": "nyc npm run test"
+    "coverage": "nyc --reporter=lcov --reporter=text npm test"
   },
   "author": "",
   "license": "ISC",

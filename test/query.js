@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 describe("Contact APIs", () => {
  
   describe("GET /query/queries", () => {
-    const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE1ODk1ODQsImV4cCI6MTY1MTYxODM4NH0.s2kaoDzzz-712VTjkx5xDPLK4foDmf2l48mb97x3vZ8"
+    const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE1OTg5MDEsImV4cCI6MTY1MTYyNzcwMX0.E8y-xeOTREutJqjvuJicW7dIHTg42fWmnLkmRAkyNa0"
     it("It should GET all the query", (done) => 
     {
       chai
