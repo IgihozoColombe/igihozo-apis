@@ -93,21 +93,21 @@ describe("PUT /article/:id", () => {
         done();
       });
   });
-}); describe("PUT /article/:id", () => {
-    it("It should update an existing blog", (done) => {
-      const blogId = "626a40f2f51b872a6c9dbc5c";
+}); describe("PUT /user/updateUser", () => {
+    it("It should update an existing user", (done) => {
+      const userId = "626a40f2f51b872a6c9dbc5c";
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
         const user = {
-          title: "testing creating a new blog",
-          body: "this is the body of blog",
-          status: "description goes here",
+          name: "testing creating a new blog",
+          username: "this is the body of blog",
+          email: "description goes here",
         };
       chai
         .request(server)
-        .put("/user/" + blogId)
+        .put("/user/updateUser" + userId)
         .set({ Authorization: `Bearer ${token}` })
-        .send(blog)
+        .send(user)
         .end((err, response) => {
           response.should.have.status(200);
           response.body.should.be.a("object");
