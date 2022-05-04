@@ -106,7 +106,7 @@ describe("Blogs APIs", () => {
   });
 
     /**
-   * Test the PATCH route
+   * Test the PUT route
    */
 
 describe("PUT /article/comment/:id", () => {
@@ -123,7 +123,23 @@ describe("PUT /article/comment/:id", () => {
         .set({ Authorization: `Bearer ${token}` })
         .send(blog)
         .end((err, response) => {
-          response.should.have.status(404);
+          response.should.have.status(200);
+          response.body.should.be.a("object");
+          done();
+        });
+    });
+  });
+  describe("PUT comment on a blog", () => {
+    it("It should add comment on an existing blog", (done) => {
+      const blogId = "626a40f2f51b872a6c9dbc5c";
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
+      chai
+        .request(server)
+        .patch("/article/like/" + blogId)
+        .set({ Authorization: `Bearer ${token}` })
+        .end((err, response) => {
+          response.should.have.status(200);
           response.body.should.be.a("object");
           done();
         });

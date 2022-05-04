@@ -71,31 +71,9 @@ describe('User', () => {
     });
     
 });
-describe("PUT /article/:id", () => {
-  it("It should update an existing blog", (done) => {
-    const blogId = "626a40f2f51b872a6c9dbc5c";
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
-      const blog = {
-        title: "testing creating a new blog",
-        body: "this is the body of blog",
-        status: "description goes here",
-      };
-    chai
-      .request(server)
-      .put("/article/" + blogId)
-      .set({ Authorization: `Bearer ${token}` })
-      .send(blog)
-      .end((err, response) => {
-        response.should.have.status(200);
-        response.body.should.be.a("object");
-    
-        done();
-      });
-  });
-}); describe("PUT /user/updateUser", () => {
+ describe("PUT user", () => {
     it("It should update an existing user", (done) => {
-      const userId = "626a40f2f51b872a6c9dbc5c";
+    
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
         const user = {
@@ -105,7 +83,31 @@ describe("PUT /article/:id", () => {
         };
       chai
         .request(server)
-        .put("/user/updateUser" + userId)
+        .put("/user/updateUser")
+        .set({ Authorization: `Bearer ${token}` })
+        .send(user)
+        .end((err, response) => {
+          response.should.have.status(200);
+          response.body.should.be.a("object");
+      
+          done();
+        });
+    });
+  });
+  describe("PUT user", () => {
+    it("It should update an change password of user", (done) => {
+    
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
+        const user = {
+          email: "nyituriki@gmail.com",
+          oldPassword: "password&*12",
+          newPassword: "newpassword#$12",
+          confirmPassword:"newpassword#$12"
+        };
+      chai
+        .request(server)
+        .put("/user/changePassword")
         .set({ Authorization: `Bearer ${token}` })
         .send(user)
         .end((err, response) => {
