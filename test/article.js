@@ -37,7 +37,7 @@ describe("Blogs APIs", () => {
     it("It should GET a blog by ID", (done) => {
       const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE1ODk1ODQsImV4cCI6MTY1MTYxODM4NH0.s2kaoDzzz-712VTjkx5xDPLK4foDmf2l48mb97x3vZ8";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
       chai
         .request(server)
         .get("/article/" + blogId)
@@ -57,7 +57,7 @@ describe("Blogs APIs", () => {
   describe("POST /article", () => {
     it("It should create a new article", (done) => {
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE1ODk1ODQsImV4cCI6MTY1MTYxODM4NH0.s2kaoDzzz-712VTjkx5xDPLK4foDmf2l48mb97x3vZ8";
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
       const blog = {
         title: "testing creating a new blog",
         body: "this is the body of blog",
@@ -85,7 +85,7 @@ describe("Blogs APIs", () => {
     it("It should update an existing blog", (done) => {
       const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE1ODk1ODQsImV4cCI6MTY1MTYxODM4NH0.s2kaoDzzz-712VTjkx5xDPLK4foDmf2l48mb97x3vZ8";
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
         const blog = {
           title: "testing creating a new blog",
           body: "this is the body of blog",
@@ -113,7 +113,7 @@ describe("PUT /article/comment/:id", () => {
     it("It should add comment on an existing blog", (done) => {
       const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE1ODk1ODQsImV4cCI6MTY1MTYxODM4NH0.s2kaoDzzz-712VTjkx5xDPLK4foDmf2l48mb97x3vZ8";
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
       const blog = {
         comment: "new comment after patching!",
       };
