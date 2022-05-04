@@ -119,12 +119,11 @@ describe("PUT /article/comment/:id", () => {
       };
       chai
         .request(server)
-        .patch("/article/comment/" + blogId)
+        .put("/article/comment/" + blogId)
         .set({ Authorization: `Bearer ${token}` })
         .send(blog)
         .end((err, response) => {
           response.should.have.status(200);
-          response.body.should.be.a("object");
           done();
         });
     });
@@ -136,11 +135,10 @@ describe("PUT /article/comment/:id", () => {
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
       chai
         .request(server)
-        .patch("/article/like/" + blogId)
+        .put("/article/like/" + blogId)
         .set({ Authorization: `Bearer ${token}` })
         .end((err, response) => {
           response.should.have.status(200);
-          response.body.should.be.a("object");
           done();
         });
     });
