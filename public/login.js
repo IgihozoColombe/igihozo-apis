@@ -11,7 +11,7 @@ form.addEventListener('submit', (event)=>{
         async function login() {
             const email=document.getElementById('email')
             const password=document.getElementById('password')
-            const result=await fetch('/user/signup',{
+            const result=await fetch('/user/signin',{
                 method: 'POST',
                 headers: {'Content-Type':'application/json'
             },
@@ -20,10 +20,19 @@ form.addEventListener('submit', (event)=>{
                 password
             })
             }).then((res)=>res.json())
+            if(result.status=== 'ok'){
+
+                localStorage.setItem("token",res.data.token)
+                alert("Logged in successfully!")
+            }
+
+    alert(error.message)
+
         } 
 
         form.submit();
      }else {
+         alert("invalid password")
          event.preventDefault();
      }
 
