@@ -49,7 +49,7 @@ exports.login=async(req,res)=>{
         .then(doMatch=>{
             if(doMatch){
                 // res.json({message:"successfully signed in"})
-                
+               const token = req.header('auth-token') || req.cookies.auth;
                const token = jwt.sign({_id:savedUser._id},JWT_SECRET)
                const {_id,name,email,followers,following,avatar,Bio} = savedUser
                res.json({token,user:{_id,name,email,followers,following,avatar,Bio}})
