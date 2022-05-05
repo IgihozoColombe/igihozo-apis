@@ -8,6 +8,10 @@ form.addEventListener('submit', (event)=>{
     validateForm();
     console.log(isFormValid());
     if(isFormValid()==true){
+        function login() {
+            const password=ducument
+        } 
+
         form.submit();
      }else {
          event.preventDefault();
