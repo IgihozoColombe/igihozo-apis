@@ -23,6 +23,7 @@ form.addEventListener('submit', (event)=>{
             if(result.status=== 'ok'){
 
                 localStorage.setItem("token",res.data.token)
+                
                 alert("Logged in successfully!")
             }
 
@@ -30,7 +31,7 @@ form.addEventListener('submit', (event)=>{
 
         } 
 
-        form.submit();
+        // form.submit();
      }else {
          alert("invalid password")
          event.preventDefault();
