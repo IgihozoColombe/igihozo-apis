@@ -8,8 +8,18 @@ form.addEventListener('submit', (event)=>{
     validateForm();
     console.log(isFormValid());
     if(isFormValid()==true){
-        function login() {
-            const password=ducument
+        async function login() {
+            const email=document.getElementById('email')
+            const password=document.getElementById('password')
+            const result=await fetch('/user/signup',{
+                method: 'POST',
+                headers: {'Content-Type':'application/json'
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+            }).then((res)=>res.json())
         } 
 
         form.submit();
