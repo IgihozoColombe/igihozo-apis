@@ -3,40 +3,12 @@ const emailInput = document.querySelector('#email');
 const passwordInput = document.querySelector('#password');
 
 form.addEventListener('submit', (event)=>{
-    const jwt= await login()
-    Cookies
     validateForm();
+
     console.log(isFormValid());
     if(isFormValid()==true){
-        async function login() {
-            const email=document.getElementById('email')
-            const password=document.getElementById('password')
-            const result=await fetch('/user/signin',{
-                method: 'POST',
-                headers: {'Content-Type':'application/json'
-            },
-            body: JSON.stringify({
-                email,
-                password
-            })
-            }).then((res)=>res.json())
-            if(result.status=== 'ok'){
-
-                localStorage.setItem("token",res.data.token)
-                
-                alert("Logged in successfully!")
-            }
-
-    alert(error.message)
-
-        } 
-
-        // form.submit();
-     }else {
-         alert("invalid password")
-         event.preventDefault();
-     }
-
+        login();
+    }
 });
 
 function isFormValid(){
@@ -50,6 +22,32 @@ function isFormValid(){
     return result;
 }
 
+function login() {
+    fetch("user/signin",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            email,
+            password
+        })
+    })  
+    .then(res=>{
+        console.log(res)
+       if(res.error){
+      
+         alert(res.error)
+       }
+       else{
+           localStorage.setItem("jwt",res.data.token)
+           localStorage.setItem("user",JSON.stringify(res.data.user))
+          alert("logged in")
+       }
+    }).catch(err=>{
+        console.log(err)
+    })
+}
 function validateForm() {
    
 
