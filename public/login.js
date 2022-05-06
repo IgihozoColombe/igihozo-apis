@@ -103,23 +103,20 @@ event.preventDefault();
                     password: pass
                 })
             }).then((res) => res.json())
-            console.log(result.user.name);
-       
-          //   .then((data) =>{
-          //   if(data.error){
-          //    return document.getElementById("loginError").style.display = "flex";
-          //   }else{
-          //     document.getElementById("loginError").style.display = "none";
-          //     localStorage.setItem("token", data.token);
-          //     if(data.user.email == "igihozocolombe2003@gmail.com"){
-          //       return window.location = "./dashboard.html";
-          //     }
-
-          //  console.log(data.user.username);
-          //   }
-          //   })
-            // .catch((error)=>{
-            //   console.log(error)
-            // })
+            console.log(result.user.email);
+            if(result.error){
+             return document.getElementById("loginError").style.display = "flex";
+            }else{
+              document.getElementById("loginError").style.display = "none";
+              localStorage.setItem("token", result.token);
+              if(result.user.email == "igihozocolombe2003@gmail.com"){
+                return window.location = "./dashboard.html";
+              }
+              else if(result.user.email != "igihozocolombe2003@gmail.com") {
+                return window.location = "./blogsList.html";
+              }
+            }
+        
+         
 }
 // }
