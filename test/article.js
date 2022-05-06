@@ -49,6 +49,18 @@ describe("Blogs APIs", () => {
           done();
         });
     });
+    it("It should not  GET a blog by ID", (done) => {
+      const blogId = "626a40f2f51b872a6c9dbc5c";
+      chai
+        .request(server)
+        .get("/article/" + blogId)
+        .end((err, response) => {
+          response.should.have.status(401);
+          response.body.should.be.a("object");
+       
+          done();
+        });
+    });
   });
 
   /**
@@ -56,8 +68,7 @@ describe("Blogs APIs", () => {
    */
   describe("POST /article", () => {
     it("It should create a new article", (done) => {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
+    
       const blog = {
         title: "testing creating a new blog",
         body: "this is the body of blog",
@@ -66,10 +77,26 @@ describe("Blogs APIs", () => {
       chai
         .request(server)
         .post("/article")
-        .set({ Authorization: `Bearer ${token}` })
         .send(blog)
         .end((err, response) => {
-          response.should.have.status(200);
+          response.should.have.status(401);
+          response.body.should.be.a("object");
+          
+          done();
+        });
+    });
+    it("It should not  create a new article", (done) => {
+      const blog = {
+        title: "testing creating a new blog",
+        body: "this is the body of blog",
+        status: "description goes here",
+      };
+      chai
+        .request(server)
+        .post("/article")
+        .send(blog)
+        .end((err, response) => {
+          response.should.have.status(401);
           response.body.should.be.a("object");
           
           done();
@@ -98,6 +125,24 @@ describe("Blogs APIs", () => {
         .send(blog)
         .end((err, response) => {
           response.should.have.status(200);
+          response.body.should.be.a("object");
+      
+          done();
+        });
+    });
+    it("It should not  update an existing blog", (done) => {
+      const blogId = "626a40f2f51b872a6c9dbc5c";
+        const blog = {
+          title: "testing creating a new blog",
+          body: "this is the body of blog",
+          status: "description goes here",
+        };
+      chai
+        .request(server)
+        .put("/article/" + blogId)
+        .send(blog)
+        .end((err, response) => {
+          response.should.have.status(401);
           response.body.should.be.a("object");
       
           done();
