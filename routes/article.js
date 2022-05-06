@@ -4,7 +4,7 @@ const isAdmin=require("../middleware/isAdmin");
 const requireLogin = require('../middleware/requireLogin') 
 const  ArticleController =require("../controllers/article")
 
-router.post("/",requireLogin,isAdmin,upload.single("image"),ArticleController.createArticle);
+router.post("/",isAdmin,upload.single("image"),ArticleController.createArticle);
   router.get("/",ArticleController.getAllArticles);
 
     router.get("/:id",requireLogin,ArticleController.getArticlesById);

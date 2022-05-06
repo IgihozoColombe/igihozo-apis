@@ -1,131 +1,100 @@
-// const form = document.querySelector('#create-account-form');
-// const nameInput = document.querySelector('#name');
-// const usernameInput = document.querySelector('#username');
-// const emailInput = document.querySelector('#email');
-// const passwordInput = document.querySelector('#password');
-// const confirmPasswordInput = document.querySelector('#confirm-password');
+const form = document.querySelector('#create-account-form');
+const nameInput = document.querySelector('#name');
+const usernameInput = document.querySelector('#username');
+const emailInput = document.querySelector('#email');
+const passwordInput = document.querySelector('#password');
+const confirmPasswordInput = document.querySelector('#confirm-password');
 
-// form.addEventListener('submit', (event)=>{
+form.addEventListener('submit', (event)=>{
     
-//     validateForm();
-//     console.log(isFormValid());
-//     if(isFormValid()==true){
-//         form.submit();
-//      }else {
-//          event.preventDefault();
-//      }
+    validateForm();
+    console.log(isFormValid());
+    if(isFormValid()==true){
+        form.submit();
+     }else {
+         event.preventDefault();
+     }
 
-// });
+});
 
-// function isFormValid(){
-//     const inputContainers = form.querySelectorAll('.input-group');
-//     let result = true;
-//     inputContainers.forEach((container)=>{
-//         if(container.classList.contains('error')){
-//             result = false;
-//         }
-//     });
-//     return result;
-// }
+function isFormValid(){
+    const inputContainers = form.querySelectorAll('.input-group');
+    let result = true;
+    inputContainers.forEach((container)=>{
+        if(container.classList.contains('error')){
+            result = false;
+        }
+    });
+    return result;
+}
 
-// function validateForm() {
+function validateForm() {
     
-//     if(nameInput.value.trim()==''){
-//         setError(nameInput, 'Name can not be empty');
-//     }else if(nameInput.value.trim().length <5 || nameInput.value.trim().length > 20){
-//         setError(nameInput, 'Name must be min 5 and max 15 charecters');
-//     }else {
-//         setSuccess(nameInput);
-//     }
-//     //USERNAME
-//     if(usernameInput.value.trim()==''){
-//         setError(usernameInput, 'username can not be empty');
-//     }else if(usernameInput.value.trim().length <5 || usernameInput.value.trim().length > 10){
-//         setError(usernameInput, 'username must be min 5 and max 15 charecters');
-//     }else {
-//         setSuccess(usernameInput);
-//     }
-//     //EMAIL
-//     if(emailInput.value.trim()==''){
-//         setError(emailInput, 'Provide email address');
-//     }else if(isEmailValid(emailInput.value)){
-//         setSuccess(emailInput);
-//     }else{
-//         setError(emailInput, 'Provide valid email address');
-//     }
+    if(nameInput.value.trim()==''){
+        setError(nameInput, 'Name can not be empty');
+    }else if(nameInput.value.trim().length <5 || nameInput.value.trim().length > 20){
+        setError(nameInput, 'Name must be min 5 and max 15 charecters');
+    }else {
+        setSuccess(nameInput);
+    }
+    //USERNAME
+    if(usernameInput.value.trim()==''){
+        setError(usernameInput, 'username can not be empty');
+    }else if(usernameInput.value.trim().length <5 || usernameInput.value.trim().length > 10){
+        setError(usernameInput, 'username must be min 5 and max 15 charecters');
+    }else {
+        setSuccess(usernameInput);
+    }
+    //EMAIL
+    if(emailInput.value.trim()==''){
+        setError(emailInput, 'Provide email address');
+    }else if(isEmailValid(emailInput.value)){
+        setSuccess(emailInput);
+    }else{
+        setError(emailInput, 'Provide valid email address');
+    }
 
-//     //PASSWORD
-//     if(passwordInput.value.trim()==''){
-//         setError(passwordInput, 'Password can not be empty');
-//     }else if(passwordInput.value.trim().length <6 || passwordInput.value.trim().length >20){
-//         setError(passwordInput, 'Password min 6 max 20 charecters');
-//     }else {
-//         setSuccess(passwordInput);
-//     }
-//     //CONFIRM PASSWORD
-//     if(confirmPasswordInput.value.trim()==''){
-//         setError(confirmPasswordInput, 'Password can not be empty');
-//     }else if(confirmPasswordInput.value !== passwordInput.value){
-//         setError(confirmPasswordInput, 'Password does not match');
-//     }else {
-//         setSuccess(confirmPasswordInput);
-//     }
-// }
+    //PASSWORD
+    if(passwordInput.value.trim()==''){
+        setError(passwordInput, 'Password can not be empty');
+    }else if(passwordInput.value.trim().length <6 || passwordInput.value.trim().length >20){
+        setError(passwordInput, 'Password min 6 max 20 charecters');
+    }else {
+        setSuccess(passwordInput);
+    }
+    //CONFIRM PASSWORD
+    if(confirmPasswordInput.value.trim()==''){
+        setError(confirmPasswordInput, 'Password can not be empty');
+    }else if(confirmPasswordInput.value !== passwordInput.value){
+        setError(confirmPasswordInput, 'Password does not match');
+    }else {
+        setSuccess(confirmPasswordInput);
+    }
+}
 
-// function setError(element, errorMessage) {
-//     const parent = element.parentElement;
-//     if(parent.classList.contains('success')){
-//         parent.classList.remove('success');
-//     }
-//     parent.classList.add('error');
-//     const paragraph = parent.querySelector('p');
-//     paragraph.textContent = errorMessage;
-// }
+function setError(element, errorMessage) {
+    const parent = element.parentElement;
+    if(parent.classList.contains('success')){
+        parent.classList.remove('success');
+    }
+    parent.classList.add('error');
+    const paragraph = parent.querySelector('p');
+    paragraph.textContent = errorMessage;
+}
 
-// function setSuccess(element){
-//     const parent = element.parentElement;
-//     if(parent.classList.contains('error')){
-//         parent.classList.remove('error');
-//     }
-//     parent.classList.add('success');
-// }
+function setSuccess(element){
+    const parent = element.parentElement;
+    if(parent.classList.contains('error')){
+        parent.classList.remove('error');
+    }
+    parent.classList.add('success');
+}
 
-// function isEmailValid(email){
-//     const reg =/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+function isEmailValid(email){
+    const reg =/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-//     return reg.test(email);
-// }
+    return reg.test(email);
+}
 
 
   
-const registerUser = ()=>{
-  const name=document.getElementById('name')
-  const email=document.getElementById('email')
-  const username=document.getElementById('username')
-  const password=document.getElementById('password')
-
-  fetch("/user/signup",{
-      method:"post",
-      headers:{
-          "Content-Type":"application/json"
-      },
-      body:JSON.stringify({
-          name,
-          email,
-          username,
-          password
-      })
-  }).then(res=>res.json())
-  .then(data=>{
-      console.log(data)
-     if(data.error){
-      console.log(data.error)
-     }
-     else{
-
-     console.log(data)
-     }
-  }).catch(err=>{
-      console.log(err)
-  })
-}
