@@ -82,18 +82,18 @@
 //   }
 //   parent.classList.add('success');
 // }
-function loginUser(){
+async function loginUser(event){
   document.getElementById("loginError").style.display = "none";
+event.preventDefault();
+// let isValidEmail = validateEmail();
+// let isValidPassword = validatePassword();
 
-let isValidEmail = validateEmail();
-let isValidPassword = validatePassword();
-
-if(isValidEmail == true && isValidPassword == true){
+// if(isValidEmail == true && isValidPassword == true){
 
   let emails = document.getElementById("email").value.trim();
   let pass = document.getElementById("password").value;
 
-  fetch("/user/signin", {
+  const result=await fetch("/user/signin", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -103,21 +103,23 @@ if(isValidEmail == true && isValidPassword == true){
                     password: pass
                 })
             }).then((res) => res.json())
-            .then((data) =>{
-            if(data.error){
-             return document.getElementById("loginError").style.display = "flex";
-            }else{
-              document.getElementById("loginError").style.display = "none";
-              localStorage.setItem("token", data.token);
-              if(data.user.role == "padmin"){
-                return window.location = "./admin.blogs.html";
-              }
+            console.log(result.user.name);
+       
+          //   .then((data) =>{
+          //   if(data.error){
+          //    return document.getElementById("loginError").style.display = "flex";
+          //   }else{
+          //     document.getElementById("loginError").style.display = "none";
+          //     localStorage.setItem("token", data.token);
+          //     if(data.user.email == "igihozocolombe2003@gmail.com"){
+          //       return window.location = "./dashboard.html";
+          //     }
 
-            return isLogged(data.user.username);
-            }
-            })
-            .catch((error)=>{
-              console.log(error)
-            })
+          //  console.log(data.user.username);
+          //   }
+          //   })
+            // .catch((error)=>{
+            //   console.log(error)
+            // })
 }
-}
+// }
