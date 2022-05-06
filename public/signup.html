@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <form  action="/user/signup"  id="create-account-form" method="POST">
+    <form >
         
         <div class="title">
             <h2>Create Account</h2>
@@ -48,7 +48,7 @@
             <i class="fas fa-exclamation-circle"></i>
             <p>Error Message</p>
         </div>
-        <!-- CONFIRM PASSWORD -->
+
         <div class="input-group">
             <label for="confirm-password">Confirm Password</label>
             <input type="password" id="confirm-password" placeholder="Password" name="confirmpassword">
@@ -57,13 +57,13 @@
             <p>Error Message</p>
         </div>
 
-        <button type="submit" class="btn">Submit</button>
+        <button type="submit" class="btn" onclick="return registerUser()">Submit</button>
         <span>Have an account?
             <a href="login.html">Login</a> </span>
     </form>
 
 
     <!-- JAVASCRIPT -->
-    <script src="signup.js"></script>
+    <!-- <script src="signup.js"></script> -->
 </body>
 </html>
