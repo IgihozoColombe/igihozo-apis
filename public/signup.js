@@ -100,13 +100,13 @@
   
 
 
-  async function loginUser(event){
+  async function registerUser(event){
     document.getElementById("loginError").style.display = "none";
   event.preventDefault();
-  
+
   let name = document.getElementById("name").value.trim();
-  let username = document.getElementById("username").value.trim();
   let emails = document.getElementById("email").value.trim();
+  let username = document.getElementById("username").value.trim();
     let pass = document.getElementById("password").value;
   
     const result=await fetch("/user/signin", {
@@ -115,16 +115,17 @@
                       'Content-Type': 'application/json'
                   },
                   body: JSON.stringify({
-                      email: emails,
+                    name:name,
+                    email: emails,
+                    username:username,
                       password: pass
                   })
               }).then((res) => res.json())
-              console.log(result.user.email);
+              console.log(result);
               if(result.error){
                return document.getElementById("loginError").style.display = "flex";
               }else{
                 document.getElementById("loginError").style.display = "none";
-                localStorage.setItem("token", result.token);
                 if(result.user.email == "igihozocolombe2003@gmail.com"){
                   return window.location = "./dashboard.html";
                 }

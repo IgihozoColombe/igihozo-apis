@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <form  action="/user/signup"  id="create-account-form" method="POST">
+    <span id="loginError"></span>
+    <form   id="create-account-form" onsubmit="registerUser(event)" method="post">
         
         <div class="title">
             <h2>Create Account</h2>
