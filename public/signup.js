@@ -100,32 +100,66 @@
   
 
 
-  async function registerUser(event){
+  // async function registerUser(event){
+  //   document.getElementById("loginError").style.display = "none";
+  // event.preventDefault();
+
+  // let name = document.getElementById("name").value
+  // let emails = document.getElementById("email").value.trim();
+  // let username = document.getElementById("username").value.trim();
+  //   let pass = document.getElementById("password").value;
+  
+  //   const result=await fetch("/user/signup", {
+  //                 method: 'POST',
+  //                 headers: {
+  //                     'Content-Type': 'application/json'
+  //                 },
+  //                 body: JSON.stringify({
+  //                   name:name,
+  //                   email: emails,
+  //                   username:username,
+  //                     password: pass
+  //                 })
+  //             }).then((res) => res.json())
+  //             console.log(result);
+  //             if(result.error){
+  //              return document.getElementById("loginError").style.display = "flex";
+  //             }else{
+  //               document.getElementById("loginError").style.display = "none";
+  //               if(result.user.email == "igihozocolombe2003@gmail.com"){
+  //                 return window.location = "./dashboard.html";
+  //               }
+  //               else if(result.user.email != "igihozocolombe2003@gmail.com") {
+  //                 return window.location = "./blogsList.html";
+  //               }
+  //             }
+          
+           
+  // }
+
+  async function loginUser(event){
     document.getElementById("loginError").style.display = "none";
   event.preventDefault();
-
-  let name = document.getElementById("name").value
-  let emails = document.getElementById("email").value.trim();
-  let username = document.getElementById("username").value.trim();
+  
+    let emails = document.getElementById("email").value.trim();
     let pass = document.getElementById("password").value;
   
-    const result=await fetch("/user/signup", {
+    const result=await fetch("/user/signin", {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json'
                   },
                   body: JSON.stringify({
-                    name:name,
-                    email: emails,
-                    username:username,
+                      email: emails,
                       password: pass
                   })
               }).then((res) => res.json())
-              console.log(result);
+              console.log(result.user.email);
               if(result.error){
                return document.getElementById("loginError").style.display = "flex";
               }else{
                 document.getElementById("loginError").style.display = "none";
+                localStorage.setItem("token", result.token);
                 if(result.user.email == "igihozocolombe2003@gmail.com"){
                   return window.location = "./dashboard.html";
                 }
