@@ -104,12 +104,12 @@
     document.getElementById("loginError").style.display = "none";
   event.preventDefault();
 
-  let name = document.getElementById("name").value.trim();
+  let name = document.getElementById("name").value
   let emails = document.getElementById("email").value.trim();
   let username = document.getElementById("username").value.trim();
     let pass = document.getElementById("password").value;
   
-    const result=await fetch("/user/signin", {
+    const result=await fetch("/user/signup", {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json'

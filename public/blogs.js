@@ -11,8 +11,8 @@ async function loginUser(event){
     const result=await fetch("/article", {
                   method: 'POST',
                   headers: {
-                      'Content-Type': 'application/json',
-                      'Authorization':'Bearer '+localStorage.getItem('token')
+                    "Content-Type":"application/json",
+                    "Authorization":"Bearer "+localStorage.getItem("token")
                   },
                   body: JSON.stringify({
                       title: title,
