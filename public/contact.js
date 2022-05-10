@@ -130,8 +130,7 @@ async function contactUs(event){
           headers: {
                'Content-Type': 'application/json',
               
-          },
-          body: formData 
+          }
        })
          .then(function(response) {
            return response.json();
