@@ -104,8 +104,10 @@ async function contactUs(event){
                       "Authorization":"Bearer "+ localStorage.getItem("token")
                   },
                   body: JSON.stringify({
+                     name:name,
                       email: emails,
-                      password: pass
+                      subject: subject,
+                      meggase:msg
                   })
               }).then((res) => res.json())
               console.log(result.user.email);
@@ -128,9 +130,6 @@ async function contactUs(event){
           
            
   }
-  async function verifyToken(event){
-    event.preventDefault();
-   
-                              }
+
     
     
