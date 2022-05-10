@@ -9,28 +9,30 @@ chai.use(chaiHttp);
 
 describe("Blogs APIs", () => {
  
-  describe("GET /article", () => {
-    it("It should GET all the article", (done) => {
+  describe('/GET user', () => {
+    const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E"
+      it('it should GET all the articles', (done) => {
+            chai.request(server)
+            .get('/article')
+            .set({ Authorization: `Bearer ${token}` })
+            .end((err, res) => {
+                  res.should.have.status(200);
+                  res.should.be.json;
+                  
+              done();
+            });
+      });
+    it("It should NOT GET all the articles", (done) => {
       chai
         .request(server)
         .get("/article")
         .end((err, response) => {
-          response.should.have.status(200);
-          response.body.should.be.a("array");
-          done();
-        });
-    });
-
-    it("It should NOT GET all the article", (done) => {
-      chai
-        .request(server)
-        .get("/article")
-        .end((err, response) => {
-          response.should.have.status(200);
+          response.should.have.status(401);
           done();
         });
     });
   });
+
 
 
   describe("GET /article/:id", () => {

@@ -5,7 +5,7 @@
     "title": "My Portifolio  APIs",
     "description": "Igihozo Portiflio APIs "
   },
-  "host": "localhost:5000",
+  "host": "igihozo-portifolio.herokuapp.com",
   "basePath": "/",
   "schemes": [
     "http"
@@ -171,7 +171,7 @@
         ]
       }
     },
-    "/user/users/{userId}": {
+    "/user/users/{id}": {
       "get": {
         "tags": [
           "User"
@@ -220,7 +220,6 @@
             "description": "Internal Server Error"
           }
         }
-
       },
       "post": {
         "tags": [
@@ -280,7 +279,7 @@
       }
     },
 
-    "/article/{articleId}": {
+    "/article/{id}": {
       "put": {
         "tags": [
           "Article"
@@ -459,7 +458,7 @@
         }
       }
     },
-    "/article/comment/{articleId}": {
+    "/article/comment/{id}": {
       "get": {
         "tags": [
           "Article"
@@ -529,7 +528,7 @@
         ]
       }
     },
-    "/article/like/{articleId}":{
+    "/article/like/{id}":{
       "put":{
         "tags":[
           "Article"
@@ -560,7 +559,7 @@
         ]
       }
     },
-    "/article/unlike/{articleId}":{
+    "/article/unlike/{id}":{
       "put":{
         "tags":[
           "Article"

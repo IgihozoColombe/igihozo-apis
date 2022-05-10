@@ -33,17 +33,17 @@ exports.getAllArticles=async(req,res)=>{
 }
 exports.getArticlesById=async(req,res)=>{
     try {
-        const article = await Article.findById(req.params.articleId);
+        const article = await Article.findById(req.params.id);
         res.send(article);
-      } catch(error) {
+      } catch {
         res.status(404);
-        res.send(error);
+        res.send({ error: "Post doesn't exist!" });
       }
 }
 exports.deleteArticle=async(req,res)=>{
     try {
       
-        let article = await Article.findById(req.params.articleId);
+        let article = await Article.findById(req.params.id);
         await cloudinary.uploader.destroy(article.cloudinary_id);
         await article.remove();
         res.json(article).status(200);
@@ -56,7 +56,7 @@ exports.updateArticle=async(req,res)=>{
     try {
         const {error} = articleCreation(req.body)
         if(error) return res.send(error.details[0].message).status(400)
-        let article = await Article.findById(req.params.articleId);
+        let article = await Article.findById(req.params.id);
         await cloudinary.uploader.destroy(article.cloudinary_id);
         const result = await cloudinary.uploader.upload(req.file.path);
         const data = {
@@ -66,7 +66,7 @@ exports.updateArticle=async(req,res)=>{
           avatar: result.secure_url || article.avatar,
           cloudinary_id: result.public_id || article.cloudinary_id,
         };
-        article = await Article.findByIdAndUpdate(req.params.articleId, data, {
+        article = await Article.findByIdAndUpdate(req.params.id, data, {
      new: true
      });
         res.json(article);
@@ -75,7 +75,7 @@ exports.updateArticle=async(req,res)=>{
       }
 }
 exports.likeArticle=async(req,res)=>{
-    Article.findByIdAndUpdate(req.params.articleId,{
+    Article.findByIdAndUpdate(req.params.id,{
         $push:{likes:req.user._id}
     },{
         new:true
@@ -88,7 +88,7 @@ exports.likeArticle=async(req,res)=>{
     })
 }
 exports.unlikeArticle=async(req,res)=>{
-    Article.findByIdAndUpdate(req.params.articleId,{
+    Article.findByIdAndUpdate(req.params.id,{
         $pull:{likes:req.user._id}
     },{
         new:true
@@ -105,7 +105,7 @@ exports.commentArticle=async(req,res)=>{
         text:req.body.text,
         postedBy:req.user._id
     }
-    Article.findByIdAndUpdate(req.params.articleId,{
+    Article.findByIdAndUpdate(req.params.id,{
         $push:{comments:comment}
     },{
         new:true
