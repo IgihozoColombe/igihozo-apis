@@ -5,17 +5,17 @@ const requireLogin = require('../middleware/requireLogin')
 const  ArticleController =require("../controllers/article")
 
 router.post("/",requireLogin,upload.single("image"),ArticleController.createArticle);
-  router.get("/",requireLogin,ArticleController.getAllArticles);
+  router.get("/",ArticleController.getAllArticles);
 
-    router.get("/:id",requireLogin,ArticleController.getArticlesById);
+    router.get("/:articleId",requireLogin,ArticleController.getArticlesById);
 
-    router.delete("/:id",requireLogin,isAdmin,ArticleController.deleteArticle);
+    router.delete("/:articleId",requireLogin,isAdmin,ArticleController.deleteArticle);
 
-      router.put("/:id",requireLogin,isAdmin,upload.single("image"),ArticleController.updateArticle);
+      router.put("/:articleId",requireLogin,isAdmin,upload.single("image"),ArticleController.updateArticle);
 
-        router.put('/like/:id',requireLogin,ArticleController.likeArticle)
-      router.put('/unlike/:id',requireLogin,ArticleController.unlikeArticle)
-      router.put('/comment/:id',requireLogin,ArticleController.commentArticle)
+        router.put('/like/:articleId',requireLogin,ArticleController.likeArticle)
+      router.put('/unlike/:articleId',requireLogin,ArticleController.unlikeArticle)
+      router.put('/comment/:articleId',requireLogin,ArticleController.commentArticle)
       
       
 
