@@ -130,6 +130,12 @@ async function contactUs(event){
           
            
   }
-
+function verifyToken(){
+  if (localStorage.length > 0){
+    //Items are stored in local storage
+}else{
+    //Local storage is empty
+}
+}
     
     
