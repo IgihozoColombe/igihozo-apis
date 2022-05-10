@@ -100,7 +100,8 @@ async function contactUs(event){
     const result=await fetch("/user/signin", {
                   method: 'POST',
                   headers: {
-                      'Content-Type': 'application/json'
+                      'Content-Type': 'application/json',
+                      "Authorization":"Bearer "+ localStorage.getItem("token")
                   },
                   body: JSON.stringify({
                       email: emails,
@@ -113,6 +114,10 @@ async function contactUs(event){
               }else{
                 document.getElementById("loginError").style.display = "none";
                 localStorage.setItem("token", result.token);
+                sessionStorage.setItem("AuthenticationState", "token");
+                
+                //This authentication key will expire in 1 hour.
+                sessionStorage.setItem("AuthenticationExpires", Date.now.addHours(1));
                 if(result.user.email == "igihozocolombe2003@gmail.com"){
                   return window.location = "./dashboard.html";
                 }
