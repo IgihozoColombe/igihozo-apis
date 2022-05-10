@@ -128,23 +128,9 @@ async function contactUs(event){
           
            
   }
-  async function listAllBlogs(event){
+  async function verifyToken(event){
     event.preventDefault();
-      await fetch('user/users', {
-          method: 'GET',
-          headers: {
-               'Content-Type': 'application/json',
-              
-          }
-       })
-         .then(function(response) {
-           return response.json();
-         })
-         .then(function(myJson) {
-           console.log(JSON.stringify(myJson));
-         });
-                }
-            
-             
+   
+                              }
     
     

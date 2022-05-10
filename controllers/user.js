@@ -144,7 +144,7 @@ exports.updateUser=async(req,res)=>{
  
  
  exports.logout=async(req,res)=>{
-   const refreshToken =req.body.token;
-   refreshTokens=refreshTokens.filter(token!== refreshToken)
+   const token =req.user.token;
+   jwtr.destroy(token)
    res.status(200).json("you are successivelly logged out")
 }
