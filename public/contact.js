@@ -87,7 +87,6 @@
 //     return reg.test(email);
 // }
 
-
 async function contactUs(event){
     document.getElementById("loginError").style.display = "none";
   event.preventDefault();
@@ -97,11 +96,14 @@ async function contactUs(event){
   let subject = document.getElementById("subject").value.trim();
   let msg = document.getElementById("message").value;
   
-    const result=await fetch("/user/signin", {
+  let headers = new Headers();
+  // headers.append("Authorization ", localStorage.getItem("token"))
+  const token = localStorage.getItem("token");
+  console.log("token " + token)
+    fetch("/user/signin", {
                   method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                      "Authorization":"Bearer "+ localStorage.getItem("token")
+                  headers:{
+                    'Authorization ':token
                   },
                   body: JSON.stringify({
                      name:name,
