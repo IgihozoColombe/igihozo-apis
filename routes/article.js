@@ -6,9 +6,7 @@ const  ArticleController =require("../controllers/article")
 
 router.post("/",requireLogin,upload.single("image"),ArticleController.createArticle);
   router.get("/",requireLogin,ArticleController.getAllArticles);
-
     router.get("/:id",requireLogin,ArticleController.getArticlesById);
-
     router.delete("/:id",requireLogin,isAdmin,ArticleController.deleteArticle);
 
       router.put("/:id",requireLogin,isAdmin,upload.single("image"),ArticleController.updateArticle);
