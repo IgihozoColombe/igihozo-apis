@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- ===== BOX ICONS ===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <script src="https://kit.fontawesome.com/a05ef9628f.js" crossorigin="anonymous"></script>
+        <!-- ===== CSS ===== -->
+        <link rel="stylesheet" href="../css/admin.css">
+        <!-- <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script> -->
+
+        <title>Add Blog</title>
+    </head>
+    <body class="body-pd" id="body-pd">
+        <header class="header body-pd" id="header">
+            <div class="header__toggle">
+                <i class='bx bx-menu' id="header-toggle"></i>
+            </div>
+
+            <h3 class="page-title">Post Blog</h3>
+
+            <div class="header__img">
+                <img src="../images/me.png" alt="">
+            </div>
+        </header>
+
+        <div class="l-navbar show" id="nav-bar">
+            <nav class="nav">
+                <div>
+                    <a href="#" class="nav__logo">
+                        <i class='bx bx-layer nav__logo-icon'></i>
+                        <span class="nav__logo-name">Emmanuel</span>
+                    </a>
+                    
+                    <br><br>
+                    <div class="nav__list">
+                        <!-- <a href="#" class="nav__link">
+                        <i class='bx bx-grid-alt nav__icon' ></i>
+                            <span class="nav__name">Dashboard</span>
+                        </a> -->
+
+                        <a href="./users.html" class="nav__link">
+                            <i class='bx bx-user nav__icon' ></i>
+                            <span class="nav__name">Users</span>
+                        </a>
+                        
+                        <!-- <a href="#" class="nav__link">
+                            <i class='bx bx-message-square-detail nav__icon' ></i>
+                            <span class="nav__name">Messages</span>
+                        </a> -->
+
+                        <a href="./admin.blogs.html" class="nav__link">
+                            <i class='bx bx-bookmark nav__icon' ></i>
+                            <span class="nav__name">Blogs</span>
+                        </a>
+
+                        <a href="./addBlog.html" class="nav__link active">
+                            <i class='bx bx-folder nav__icon' ></i>
+                            <span class="nav__name">Add Blog</span>
+                        </a>
+
+                        <a href="./profile.html" class="nav__link">
+                            <i class='fa fa-user nav__icon' ></i>
+                            <span class="nav__name">Profile</span>
+                        </a>
+
+                        <a href="./Messages.html" class="nav__link">
+                            <i class='bx bx-chat nav__icon' ></i>
+                            <span class="nav__name">Messages</span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="./index.html" class="nav__link">
+                    <i class='bx bx-log-out nav__icon' ></i>
+                    <span class="nav__name">Log Out</span>
+                </a>
+            </nav>
+        </div>
+
+      <div class="blogs">
+        <br><br>
+        <!-- <h4>Add Blog</h4> -->
+
+        <!-- <div class="form-cont"> -->
+
+            <div class="container form-c-cont-b">
+                <form method="POST" onsubmit="postBlog(event)">
+                  <label for="fname">Blog Title</label>
+                  <input type="text" id="fname" name="firstname" placeholder="Blog title..">
+              <br>
+                  <!-- <label for="subject">Text</label>
+                  <textarea id="subject" name="subject" placeholder="Write a blog.." style="height:200px"></textarea> -->
+              
+
+                  <div class="editor-cont">
+                    <div class="navbars">
+                    <button onclick="addCode()" type="button" class="codeBtn"><i class="fa fa-code"></i></button>
+                    </div>
+                      <div class="editor" id="editor" contenteditable="true">
+                
+                      </div>
+                    </div>
+
+                  <input onchange="previewImage(event)" type="file" style="display: none;" id="file-img">
+                  
+                  <div class="up-b">
+                    <label for="file-img" class="upload">
+                        Upload Image
+                      </label>
+                  </div>
+
+                  <div class="profile-page img-blo">
+                    <img id="preview" src="" alt="">
+                </div>
+
+                  <input onclick="postBlog(event)" type="submit" value="Create blog">
+                </form>
+              </div>
+        
+        <!-- <button class="post-blog btn sendbtn">Post Blog</button> -->
+
+      </div>
+
+      <script>
+
+function addCode(){
+            document.getElementById("editor").innerHTML += "```<br><br>```"
+        }
+
+            const previewImage = e => {
+      const reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = () => {
+         const preview = document.getElementById('preview');
+         preview.src = reader.result;
+         document.getElementsByClassName("img-blo")[0].style.display = "block"
+      };
+   };
+
+   function postBlog(e){
+    e.preventDefault();
+let title = document.getElementById("fname").value?.trim();
+let text = document.getElementById("editor").innerHTML?.trim();
+let img = document.getElementById('preview').src;
+
+if(title && text && img){
+    
+    let CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/duldhdjsj/image/upload';
+
+    let data = {
+                "file": img,
+                "upload_preset": "s1ef0r8m",
+            }
+
+    fetch(CLOUDINARY_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then((res) => res.json())
+            .then((data) =>{
+                let info = {
+                    title: title,
+                    text: text,
+                    fileUrl: data?.url,
+                    filePublicId: data?.public_id
+                }
+
+                console.log(info)
+                let token = localStorage.getItem("token");
+
+                if(!token){
+                    window.location = "./login.html";
+                }
+
+                fetch("https://emmanueldufitumukiza.herokuapp.com/api/blogs", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token
+                },
+                body: JSON.stringify(info)
+            }).then((res) => res.json())
+            .then((data) =>{
+            console.log(data)
+           return window.location  ="./admin.blogs.html"
+            })
+            .catch((error)=>{
+        console.log(error.message)
+    })
+
+
+            })
+    .catch((error)=>{
+        console.log(error)
+    })
+
+}
+   }
+
+   function isLogged(username){
+
+let token = localStorage.getItem("token")
+
+if(token){
+
+ fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/info/loggedinuser", {
+   method: 'GET',
+   headers: {
+       'Authorization': token
+   }
+ })
+ .then((res) => res.json())
+   .then((res) =>{
+     if(res.username){
+      return ;
+     }else{
+        window.location = "./login.html"
+        return ;
+     }
+   });
+}if(!token){
+window.location = "./login.html"
+return ;
+}
+}
+
+window.onload = function(){
+ isLogged('')
+}
+
+    </script>
+    </body>
+</html>
