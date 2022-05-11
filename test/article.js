@@ -68,7 +68,7 @@ describe("Blogs APIs", () => {
   /**
    * Test the POST route
    */
-  describe("POST /article", () => {
+  describe("POST /blogs", () => {
     it("It should create a new article", (done) => {
     
       const blog = {
@@ -156,7 +156,7 @@ describe("Blogs APIs", () => {
    * Test the PUT route
    */
 
-describe("PUT /article/comment/:id", () => {
+describe("PUT /blogs/comment/:id", () => {
     it("It should add comment on an existing blog", (done) => {
       const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
@@ -166,7 +166,7 @@ describe("PUT /article/comment/:id", () => {
       };
       chai
         .request(server)
-        .put("/blogs/" + blogId+"/comment")
+        .put("/blogs/"+blogId+"comment")
         .set({ Authorization: `Bearer ${token}` })
         .send(blog)
         .end((err, response) => {
@@ -182,7 +182,7 @@ describe("PUT /article/comment/:id", () => {
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
       chai
         .request(server)
-        .put("/blogs/" + blogId+"/comment")
+        .put("/blogs/"+blogId+"comment")
         .set({ Authorization: `Bearer ${token}` })
         .end((err, response) => {
           response.should.have.status(200);
