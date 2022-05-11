@@ -12,7 +12,7 @@ chai.use(chaiHttp);
 describe('User', () => {
   
     describe('/GET user', () => {
-      const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E"
+      const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE1OTg5MDEsImV4cCI6MTY1MTYyNzcwMX0.E8y-xeOTREutJqjvuJicW7dIHTg42fWmnLkmRAkyNa0"
         it('it should GET all the user', (done) => {
               chai.request(server)
               .get('/user/users')
