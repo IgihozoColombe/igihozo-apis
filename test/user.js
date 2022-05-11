@@ -16,7 +16,7 @@ describe('User', () => {
         it('it should GET all the user', (done) => {
               chai.request(server)
               .get('/user/users')
-              .set({ Authorization: `Bearer ${token}` })
+              .set({ Authorization: `${token}`})
               .end((err, res) => {
                     res.should.have.status(200);
                     res.should.be.json;
@@ -71,6 +71,93 @@ describe('User', () => {
     });
     
 });
-
+ describe("PUT user", () => {
+    it("It should update an existing user", (done) => {
+    
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
+        const user = {
+          name: "testing creating a new blog",
+          username: "this is the body of blog",
+          email: "description goes here",
+        };
+      chai
+        .request(server)
+        .put("/user/updateUser")
+        .set({ Authorization: `${token}`})
+        .send(user)
+        .end((err, response) => {
+          response.should.have.status(200);
+          response.body.should.be.a("object");
+      
+          done();
+        });
+    });
+  });
+  describe("PUT user", () => {
+    it("It should not update an existing user", (done) => {
+    
+        const user = {
+          name: "testing creating a new blog",
+          username: "this is the body of blog",
+          email: "description goes here",
+        };
+      chai
+        .request(server)
+        .put("/user/updateUser")
+        .send(user)
+        .end((err, response) => {
+          response.should.have.status(401);
+          response.body.should.be.a("object");
+      
+          done();
+        });
+    });
+  });
+  describe("PUT user", () => {
+    it("It should change password of user", (done) => {
+    
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
+        const user = {
+          email: "nyituriki@gmail.com",
+          oldPassword: "password&*12",
+          newPassword: "newpassword#$12",
+          confirmPassword:"newpassword#$12"
+        };
+      chai
+        .request(server)
+        .put("/user/changePassword")
+        .set({ Authorization: `${token}`})
+        .send(user)
+        .end((err, response) => {
+          response.should.have.status(200);
+          response.body.should.be.a("object");
+      
+          done();
+        });
+    });
+  });
+  describe("PUT user", () => {
+    it("It should not change password of user", (done) => {
+    
+        const user = {
+          email: "nyituriki@gmail.com",
+          oldPassword: "password&*12",
+          newPassword: "newpassword#$12",
+          confirmPassword:"newpassword#$12"
+        };
+      chai
+        .request(server)
+        .put("/user/changePassword")
+        .send(user)
+        .end((err, response) => {
+          response.should.have.status(401);
+          response.body.should.be.a("object");
+      
+          done();
+        });
+    });
+  });
 })
 

@@ -9,41 +9,55 @@ chai.use(chaiHttp);
 
 describe("Blogs APIs", () => {
  
-  describe("GET /article", () => {
-    it("It should GET all the article", (done) => {
+  describe('/GET user', () => {
+    const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E"
+      it('it should GET all the articles', (done) => {
+            chai.request(server)
+            .get('/blogs')
+            .set({ Authorization: `${token}`})
+            .end((err, res) => {
+                  res.should.have.status(200);
+                  res.should.be.json;
+                  
+              done();
+            });
+      });
+    it("It should NOT GET all the articles", (done) => {
       chai
         .request(server)
-        .get("/article")
+        .get("/blogs")
         .end((err, response) => {
-          response.should.have.status(200);
-          response.body.should.be.a("array");
-          done();
-        });
-    });
-
-    it("It should NOT GET all the article", (done) => {
-      chai
-        .request(server)
-        .get("/article")
-        .end((err, response) => {
-          response.should.have.status(200);
+          response.should.have.status(401);
           done();
         });
     });
   });
 
 
-  describe("GET /article/:id", () => {
+
+  describe("GET /blogs/:id", () => {
     it("It should GET a blog by ID", (done) => {
       const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE1OTg5MDEsImV4cCI6MTY1MTYyNzcwMX0.E8y-xeOTREutJqjvuJicW7dIHTg42fWmnLkmRAkyNa0";
       chai
         .request(server)
-        .get("/article/" + blogId)
-        .set({ Authorization: `Bearer ${token}` })
+        .get("/blogs/" + blogId)
+        .set({ Authorization: `${token}`})
         .end((err, response) => {
           response.should.have.status(200);
+          response.body.should.be.a("object");
+       
+          done();
+        });
+    });
+    it("It should not  GET a blog by ID", (done) => {
+      const blogId = "626a40f2f51b872a6c9dbc5c";
+      chai
+        .request(server)
+        .get("/blogs/" + blogId)
+        .end((err, response) => {
+          response.should.have.status(401);
           response.body.should.be.a("object");
        
           done();
@@ -54,7 +68,7 @@ describe("Blogs APIs", () => {
   /**
    * Test the POST route
    */
-  describe("POST /article", () => {
+  describe("POST /blogs", () => {
     it("It should create a new article", (done) => {
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE1OTg5MDEsImV4cCI6MTY1MTYyNzcwMX0.E8y-xeOTREutJqjvuJicW7dIHTg42fWmnLkmRAkyNa0";
@@ -65,11 +79,27 @@ describe("Blogs APIs", () => {
       };
       chai
         .request(server)
-        .post("/article")
-        .set({ Authorization: `Bearer ${token}` })
+        .post("/blogs")
         .send(blog)
         .end((err, response) => {
-          response.should.have.status(200);
+          response.should.have.status(401);
+          response.body.should.be.a("object");
+          
+          done();
+        });
+    });
+    it("It should not  create a new article", (done) => {
+      const blog = {
+        title: "testing creating a new blog",
+        body: "this is the body of blog",
+        status: "description goes here",
+      };
+      chai
+        .request(server)
+        .post("/blogs")
+        .send(blog)
+        .end((err, response) => {
+          response.should.have.status(401);
           response.body.should.be.a("object");
           
           done();
@@ -81,7 +111,7 @@ describe("Blogs APIs", () => {
    * Test the PUT route
    */
 
-  describe("PUT /article/:id", () => {
+  describe("PUT /blogs/:id", () => {
     it("It should update an existing blog", (done) => {
       const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
@@ -93,8 +123,8 @@ describe("Blogs APIs", () => {
         };
       chai
         .request(server)
-        .put("/article/" + blogId)
-        .set({ Authorization: `Bearer ${token}` })
+        .put("/blogs/" + blogId)
+        .set({ Authorization: `${token}`})
         .send(blog)
         .end((err, response) => {
           response.should.have.status(200);
@@ -103,13 +133,31 @@ describe("Blogs APIs", () => {
           done();
         });
     });
+    it("It should not  update an existing blog", (done) => {
+      const blogId = "626a40f2f51b872a6c9dbc5c";
+        const blog = {
+          title: "testing creating a new blog",
+          body: "this is the body of blog",
+          status: "description goes here",
+        };
+      chai
+        .request(server)
+        .put("/blogs/" + blogId)
+        .send(blog)
+        .end((err, response) => {
+          response.should.have.status(401);
+          response.body.should.be.a("object");
+      
+          done();
+        });
+    });
   });
 
     /**
-   * Test the PATCH route
+   * Test the PUT route
    */
 
-describe("PUT /article/comment/:id", () => {
+describe("PUT /blogs/comment/:id", () => {
     it("It should add comment on an existing blog", (done) => {
       const blogId = "626a40f2f51b872a6c9dbc5c";
       const token =
@@ -119,16 +167,61 @@ describe("PUT /article/comment/:id", () => {
       };
       chai
         .request(server)
-        .patch("/article/comment/" + blogId)
-        .set({ Authorization: `Bearer ${token}` })
+        .put("/blogs/"+blogId+"/comment")
+        .set({ Authorization: `${token}`})
         .send(blog)
         .end((err, response) => {
-          response.should.have.status(404);
-          response.body.should.be.a("object");
+          response.should.have.status(200);
           done();
         });
     });
   });
+  describe("PUT comment on a blog", () => {
+    it("It should add comment on an existing blog", (done) => {
+      const blogId = "626a40f2f51b872a6c9dbc5c";
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
+      chai
+        .request(server)
+        .put("/blogs/"+blogId+"comment")
+        .set({ Authorization: `${token}`})
+        .end((err, response) => {
+          response.should.have.status(200);
+          done();
+        });
+    });
+
+    describe("PUT /blogs/comment/:id", () => {
+      it("It should add comment on an existing blog", (done) => {
+        const blogId = "626a40f2f51b872a6c9dbc5c";
+        const token =
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
+      
+        chai
+          .request(server)
+          .put("/blogs/"+blogId+"/like")
+          .set({ Authorization: `${token}`})
+          .end((err, response) => {
+            response.should.have.status(200);
+            done();
+          });
+      });
+    });
+    describe("PUT like on a blog", () => {
+      it("It should add like on an existing blog", (done) => {
+        const blogId = "626a40f2f51b872a6c9dbc5c";
+        const token =
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
+        chai
+          .request(server)
+          .put("/blogs/"+blogId+"like")
+          .set({ Authorization: `${token}`})
+          .end((err, response) => {
+            response.should.have.status(200);
+            done();
+          });
+      });
+
 
 
   /**
@@ -148,6 +241,7 @@ describe("PUT /article/comment/:id", () => {
   //         done();
   //       });
   //   });
-  // });
+  });
 
+});
 });

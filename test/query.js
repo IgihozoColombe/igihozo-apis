@@ -16,7 +16,7 @@ describe("Contact APIs", () => {
       chai
         .request(server)
         .get("/query/queries")
-        .set({ Authorization: `Bearer ${token}` })
+        .set({ Authorization: `${token}`})
         .end((err, response) => {
           response.should.have.status(200);
         
