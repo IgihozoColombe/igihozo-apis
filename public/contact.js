@@ -25,13 +25,12 @@ async function contactUs(event){
               }).then((res) => res.json())
               console.log(result.user.email);
               if(result.error){
-               return document.getElementById("loginError").style.display = "flex";
+                console.log(data.error)
               }else{
                 document.getElementById("loginError").style.display = "none";
                 localStorage.setItem("token", result.token);
                 sessionStorage.setItem("AuthenticationState", "token");
-                
-                //This authentication key will expire in 1 hour.
+     
                 sessionStorage.setItem("AuthenticationExpires", Date.now.addHours(1));
                 if(result.user.email == "igihozocolombe2003@gmail.com"){
                   return window.location = "./dashboard.html";

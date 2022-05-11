@@ -1,5 +1,5 @@
 
-function createBlog(event){
+async function createBlog(event){
   // document.getElementById("loginError").style.display = "none";
   event.preventDefault();
   // console.log()
@@ -9,7 +9,7 @@ function createBlog(event){
     let status = document.getElementById("status").value;
     let image = document.getElementById("image").value;
   
-    fetch("/article", {
+    const result=await fetch("/article", {
                   method: 'POST',
                   headers: {
                     'Authorization': localStorage.getItem('token')
@@ -22,13 +22,14 @@ function createBlog(event){
                       image:image
                   })
               }).then((res) => res)
-              .then((data) =>{
-                console.log(data)})
-              .catch(err => console.log(err))
-              
-                 
-              
+              if(result.error){
+               console.log(result.error);
+               }else{
+                 console.log(result);
+                  //  return window.location = "./blogsList.html";
+                 }   
+                }
           
            
-  }
+  
   

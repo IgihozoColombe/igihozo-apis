@@ -38,7 +38,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 // app.use(express.json());
 app.use('/user',require('./routes/user'))
-app.use('/article', require('./routes/article'))
+app.use('/blogs', require('./routes/article'))
 app.use('/query', require('./routes/queries'))
 app.use('/swagger',swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     // app.use(express.static('client/build'))

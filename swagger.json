@@ -5,7 +5,7 @@
     "title": "My Portifolio  APIs",
     "description": "Igihozo Portiflio APIs "
   },
-  "host": "igihozo-portifolio.herokuapp.com",
+  "host": "localhost:5000",
   "basePath": "/",
   "schemes": [
     "http"
@@ -171,42 +171,9 @@
         ]
       }
     },
-    "/user/users/{id}": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "Authorization": []
-          }
-        ]
-      }
-    },
-    "/article": {
+ 
+  
+    "/blogs": {
       "get": {
         "tags": [
           "Article"
@@ -219,7 +186,12 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -279,7 +251,7 @@
       }
     },
 
-    "/article/{id}": {
+    "/blogs/{id}": {
       "put": {
         "tags": [
           "Article"
@@ -458,37 +430,7 @@
         }
       }
     },
-    "/article/comment/{id}": {
-      "get": {
-        "tags": [
-          "Article"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "Authorization": []
-          }
-        ]
-      },
+    "/blogs/{id}/comment": {
       "put": {
         "tags": [
           "Article"
@@ -528,7 +470,7 @@
         ]
       }
     },
-    "/article/like/{id}":{
+    "/blogs/{id}/like":{
       "put":{
         "tags":[
           "Article"
@@ -559,7 +501,7 @@
         ]
       }
     },
-    "/article/unlike/{id}":{
+    "/blogs/{id}/unlike":{
       "put":{
         "tags":[
           "Article"

@@ -10,10 +10,9 @@ router.post("/",requireLogin,upload.single("image"),ArticleController.createArti
     router.delete("/:id",requireLogin,isAdmin,ArticleController.deleteArticle);
 
       router.put("/:id",requireLogin,isAdmin,upload.single("image"),ArticleController.updateArticle);
-
-        router.put('/like/:id',requireLogin,ArticleController.likeArticle)
-      router.put('/unlike/:id',requireLogin,ArticleController.unlikeArticle)
-      router.put('/comment/:id',requireLogin,ArticleController.commentArticle)
+        router.put('/:id/like',requireLogin,ArticleController.likeArticle)
+      router.put('/:id/unlike',requireLogin,ArticleController.unlikeArticle)
+      router.put('/:id/comment',requireLogin,ArticleController.commentArticle)
       
       
 

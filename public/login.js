@@ -1,6 +1,5 @@
 
 async function loginUser(event){
-  document.getElementById("loginError").style.display = "none";
 event.preventDefault();
 
   let emails = document.getElementById("email").value.trim();
@@ -18,7 +17,7 @@ event.preventDefault();
             }).then((res) => res.json())
             console.log(result.user.email);
             if(result.error){
-             return document.getElementById("loginError").style.display = "flex";
+              console.log(result.error);
             }else{
               document.getElementById("loginError").style.display = "none";
               localStorage.setItem("token", result.token);
