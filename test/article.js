@@ -14,7 +14,7 @@ describe("Blogs APIs", () => {
       it('it should GET all the articles', (done) => {
             chai.request(server)
             .get('/blogs')
-            .set({ Authorization: `Bearer ${token}` })
+            .set({ Authorization: `${token}`})
             .end((err, res) => {
                   res.should.have.status(200);
                   res.should.be.json;
@@ -43,7 +43,7 @@ describe("Blogs APIs", () => {
       chai
         .request(server)
         .get("/blogs/" + blogId)
-        .set({ Authorization: `Bearer ${token}` })
+        .set({ Authorization: `${token}`})
         .end((err, response) => {
           response.should.have.status(200);
           response.body.should.be.a("object");
@@ -123,7 +123,7 @@ describe("Blogs APIs", () => {
       chai
         .request(server)
         .put("/blogs/" + blogId)
-        .set({ Authorization: `Bearer ${token}` })
+        .set({ Authorization: `${token}`})
         .send(blog)
         .end((err, response) => {
           response.should.have.status(200);
@@ -166,8 +166,8 @@ describe("PUT /blogs/comment/:id", () => {
       };
       chai
         .request(server)
-        .put("/blogs/"+blogId+"comment")
-        .set({ Authorization: `Bearer ${token}` })
+        .put("/blogs/"+blogId+"/comment")
+        .set({ Authorization: `${token}`})
         .send(blog)
         .end((err, response) => {
           response.should.have.status(200);
@@ -183,13 +183,44 @@ describe("PUT /blogs/comment/:id", () => {
       chai
         .request(server)
         .put("/blogs/"+blogId+"comment")
-        .set({ Authorization: `Bearer ${token}` })
+        .set({ Authorization: `${token}`})
         .end((err, response) => {
           response.should.have.status(200);
           done();
         });
     });
-  });
+
+    describe("PUT /blogs/comment/:id", () => {
+      it("It should add comment on an existing blog", (done) => {
+        const blogId = "626a40f2f51b872a6c9dbc5c";
+        const token =
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
+      
+        chai
+          .request(server)
+          .put("/blogs/"+blogId+"/like")
+          .set({ Authorization: `${token}`})
+          .end((err, response) => {
+            response.should.have.status(200);
+            done();
+          });
+      });
+    });
+    describe("PUT like on a blog", () => {
+      it("It should add like on an existing blog", (done) => {
+        const blogId = "626a40f2f51b872a6c9dbc5c";
+        const token =
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
+        chai
+          .request(server)
+          .put("/blogs/"+blogId+"like")
+          .set({ Authorization: `${token}`})
+          .end((err, response) => {
+            response.should.have.status(200);
+            done();
+          });
+      });
+
 
 
   /**
@@ -209,6 +240,7 @@ describe("PUT /blogs/comment/:id", () => {
   //         done();
   //       });
   //   });
-  // });
+  });
 
+});
 });

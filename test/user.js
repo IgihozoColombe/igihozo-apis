@@ -16,7 +16,7 @@ describe('User', () => {
         it('it should GET all the user', (done) => {
               chai.request(server)
               .get('/user/users')
-              .set({ Authorization: `Bearer ${token}` })
+              .set({ Authorization: `${token}`})
               .end((err, res) => {
                     res.should.have.status(200);
                     res.should.be.json;
@@ -84,7 +84,7 @@ describe('User', () => {
       chai
         .request(server)
         .put("/user/updateUser")
-        .set({ Authorization: `Bearer ${token}` })
+        .set({ Authorization: `${token}`})
         .send(user)
         .end((err, response) => {
           response.should.have.status(200);
@@ -128,7 +128,7 @@ describe('User', () => {
       chai
         .request(server)
         .put("/user/changePassword")
-        .set({ Authorization: `Bearer ${token}` })
+        .set({ Authorization: `${token}`})
         .send(user)
         .end((err, response) => {
           response.should.have.status(200);
