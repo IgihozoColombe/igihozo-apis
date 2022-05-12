@@ -172,108 +172,11 @@ function upload(){
        document.getElementById("myInfo").style.display="block"
    }
 
-   function changeUsername(){
-      let name = document.getElementById("user-name").value;
-      let id = document.getElementById("id").innerHTML;
-      let token = localStorage.getItem("token");
-
-      if(name.length>3){
-        fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/", {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': token
-                },
-                body: JSON.stringify({username: name})
-            }).then((res) => res)
-            .then((data) =>{
-            console.log(data)
-            getUser();
-            cancel();
-            isLogged();
-            });
-      }else{
-          alert("Username must be at least 4 characters long");
-      }
-   }
-
-   function chnageProfilePage(){
-       let img = document.getElementById('preview').src;
-       let file = localStorage.getItem("file");
-       let token = localStorage.getItem("token");
-       let id = document.getElementById("id").innerHTML;
-
-       if(img != file){
-
-        let CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/duldhdjsj/image/upload';
-
-let data = {
-            "file": img,
-            "upload_preset": "s1ef0r8m",
-        }
-
-fetch(CLOUDINARY_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then((res) => res.json())
-        .then((data) =>{
-            fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/", {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': token
-                },
-                body: JSON.stringify({profileImage: {
-                    public_id: data?.public_id,
-                    url: data?.url
-                }})
-            }).then((res) => res)
-            .then((data) =>{
-            console.log(data)
-            getUser();
-            cancelProfile();
-    isLogged();
-            });
-
-        });
-         
-            return ;
-       }else{
-           cancelProfile();
-           getUser();
-           return ;
-       }
-   }
-
-   function removeFile(){
-    let id = document.getElementById("id").innerHTML;
-    let token = localStorage.getItem("token");
-
-    fetch("", {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': token
-                },
-                body: JSON.stringify({profileImage: {
-                    public_id: null,
-                    url: null
-                }})
-            }).then((res) => res)
-            .then((data) =>{
-            console.log(data)
-            getUser();
-            cancelProfile();
-            });
-   }
 
    function getUser(){
     let token = localStorage.getItem("token");
   if(token){
-    fetch("/user//info/loggedinuser", {
+    fetch("/user/info/loggedinuser", {
       method: 'GET',
       headers: {
         'Authorization': token
