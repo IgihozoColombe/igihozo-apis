@@ -26,7 +26,7 @@
     "application/json"
   ],
   "paths": {
-    "/user/signin": {
+    "/users/signin": {
       "post": {
         "tags": [
           "User"
@@ -49,7 +49,7 @@
         }
       }
     },
-    "/user/signup": {
+    "/users/signup": {
       "post": {
         "tags": [
           "User"
@@ -79,7 +79,7 @@
       }
     },
    
-    "/user/changePassword": {
+    "/users/changePassword": {
       "put": {
         "tags": [
           "User"
@@ -113,7 +113,7 @@
         ]
       }
     },
-    "/user/updateUser":{
+    "/users/updateUser":{
       "put": {
         "tags": [
           "user"
@@ -147,7 +147,7 @@
         ]
       }
     },
-    "/user/users": {
+    "/users/users": {
       "get": {
         "tags": [
           "User"

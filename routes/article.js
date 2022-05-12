@@ -5,7 +5,7 @@ const requireLogin = require('../middleware/requireLogin')
 const  ArticleController =require("../controllers/article")
 
 router.post("/",requireLogin,upload.single("image"),ArticleController.createArticle);
-  router.get("/",ArticleController.getAllArticles);
+  router.get("/",requireLogin,ArticleController.getAllArticles);
     router.get("/:id",requireLogin,ArticleController.getArticlesById);
     router.delete("/:id",requireLogin,isAdmin,ArticleController.deleteArticle);
 

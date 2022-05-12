@@ -9,13 +9,13 @@ let should = chai.should();
 
 chai.use(chaiHttp);
 
-describe('User', () => {
+describe('users', () => {
   
-    describe('/GET user', () => {
+    describe('/GET users', () => {
       const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E"
         it('it should GET all the user', (done) => {
               chai.request(server)
-              .get('/user/users')
+              .get('/users/users')
               .set({ Authorization: `${token}`})
               .end((err, res) => {
                     res.should.have.status(200);
@@ -26,7 +26,7 @@ describe('User', () => {
         });
         it('it should not  GET all the user', (done) => {
           chai.request(server)
-          .get('/user/users')
+          .get('/users/users')
           .end((err, res) => {
                 res.should.have.status(401);
                 res.should.be.json;
@@ -35,15 +35,15 @@ describe('User', () => {
           });
     });
     });
-  describe('/POST user', () => {
+  describe('/POST users', () => {
   
-      it('it should login a user ', (done) => {
+      it('it should login a users ', (done) => {
         let user = {
             email:"ganza@gmail.com",
             password:"abanabeza"
          }
             chai.request(server)
-            .post('/user/signin')
+            .post('/users/signin')
             .send(user)
             .end((err, res) => {
                   res.should.have.status(200);
@@ -53,14 +53,14 @@ describe('User', () => {
             });
       });
   });
-  describe('/POST user', () => {
+  describe('/POST users', () => {
     it('it should not POST a user ', (done) => {
         let user = {
            email:"ganza@gmail.com",
            password:"abanabeza"
         }
           chai.request(server)
-          .post('/user/signup')
+          .post('/users/signup')
           .send(user)
           .end((err, res) => {
                 res.should.have.status(200);
@@ -71,7 +71,7 @@ describe('User', () => {
     });
     
 });
- describe("PUT user", () => {
+ describe("PUT users", () => {
     it("It should update an existing user", (done) => {
     
       const token =
@@ -83,7 +83,7 @@ describe('User', () => {
         };
       chai
         .request(server)
-        .put("/user/updateUser")
+        .put("/users/updateUser")
         .set({ Authorization: `${token}`})
         .send(user)
         .end((err, response) => {
@@ -94,8 +94,8 @@ describe('User', () => {
         });
     });
   });
-  describe("PUT user", () => {
-    it("It should not update an existing user", (done) => {
+  describe("PUT users", () => {
+    it("It should not update an existing users", (done) => {
     
         const user = {
           name: "testing creating a new blog",
@@ -104,7 +104,7 @@ describe('User', () => {
         };
       chai
         .request(server)
-        .put("/user/updateUser")
+        .put("/users/updateUser")
         .send(user)
         .end((err, response) => {
           response.should.have.status(401);
@@ -114,8 +114,8 @@ describe('User', () => {
         });
     });
   });
-  describe("PUT user", () => {
-    it("It should change password of user", (done) => {
+  describe("PUT users", () => {
+    it("It should change password of users", (done) => {
     
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhNDBjYmY1MWI4NzJhNmM5ZGJjNTciLCJpYXQiOjE2NTE2NTY5Mjh9.MkrsopUmRxjn1zEzSJHD24K7U0oWBPRn-GFYyJ-8H3E";
@@ -127,7 +127,7 @@ describe('User', () => {
         };
       chai
         .request(server)
-        .put("/user/changePassword")
+        .put("/users/changePassword")
         .set({ Authorization: `${token}`})
         .send(user)
         .end((err, response) => {
@@ -138,8 +138,8 @@ describe('User', () => {
         });
     });
   });
-  describe("PUT user", () => {
-    it("It should not change password of user", (done) => {
+  describe("PUT users", () => {
+    it("It should not change password of users", (done) => {
     
         const user = {
           email: "nyituriki@gmail.com",
@@ -149,7 +149,7 @@ describe('User', () => {
         };
       chai
         .request(server)
-        .put("/user/changePassword")
+        .put("/users/changePassword")
         .send(user)
         .end((err, response) => {
           response.should.have.status(401);

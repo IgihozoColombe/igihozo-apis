@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 // app.use(express.json());
-app.use('/user',require('./routes/user'))
+app.use('/users',require('./routes/user'))
 app.use('/blogs', require('./routes/article'))
 app.use('/query', require('./routes/queries'))
 app.use('/swagger',swaggerUi.serve, swaggerUi.setup(swaggerDocument));
