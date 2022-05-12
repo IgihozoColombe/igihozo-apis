@@ -136,41 +136,75 @@
           
            
   // }
+  function signup(e){
+    e.preventDefault();
 
-  async function registerUser(event){
-  
-  event.preventDefault();
   let name = document.getElementById("name").value.trim();
     let emails = document.getElementById("email").value.trim();
     let usernm = document.getElementById("username").value.trim();
     let pass = document.getElementById("password").value;
+ 
+
+
+ fetch("/users/signup", {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+                name:name,
+                email: emails,
+                username:usernm,
+                password: pass
+               })
+           }).then((res) => res.json())
+           .then((data) =>{
+            if(data.user.email == "igihozocolombe2003@gmail.com"){
+                              return window.location = "./dashboard.html";
+                            }
+                            else if(data.user.email != "igihozocolombe2003@gmail.com") {
+                              return window.location = "./blogsList.html";
+                            }
+
+           window.location = "./blogs.html";
+           
+   });
+
+  }
+  // async function registerUser(event){
+  
+  // event.preventDefault();
+  // let name = document.getElementById("name").value.trim();
+  //   let emails = document.getElementById("email").value.trim();
+  //   let usernm = document.getElementById("username").value.trim();
+  //   let pass = document.getElementById("password").value;
 
   
-    const result=await fetch("/users/signup", {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    name:name,
-                      email: emails,
-                      username:usernm,
-                      password: pass
-                  })
-              }).then((res) => res.json())
-              console.log(result.user.email);
-              if(result.error){
-           console.log(data.error);
-              }else{
+  //   const result=await fetch("/users/signup", {
+  //                 method: 'POST',
+  //                 headers: {
+  //                     'Content-Type': 'application/json',
+  //                 },
+  //                 body: JSON.stringify({
+  //                   name:name,
+  //                     email: emails,
+  //                     username:usernm,
+  //                     password: pass
+  //                 })
+  //             }).then((res) => res.json())
+  //             console.log(result.user.email);
+  //             if(result.error){
+  //          console.log(data.error);
+  //             }else{
             
-                localStorage.setItem("token", result.token);
-                if(result.user.email == "igihozocolombe2003@gmail.com"){
-                  return window.location = "./dashboard.html";
-                }
-                else if(result.user.email != "igihozocolombe2003@gmail.com") {
-                  return window.location = "./blogsList.html";
-                }
-              }
+  //               localStorage.setItem("token", result.token);
+  //               if(result.user.email == "igihozocolombe2003@gmail.com"){
+  //                 return window.location = "./dashboard.html";
+  //               }
+  //               else if(result.user.email != "igihozocolombe2003@gmail.com") {
+  //                 return window.location = "./blogsList.html";
+  //               }
+  //             }
           
            
-  }
+  // }

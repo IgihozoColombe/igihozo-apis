@@ -333,7 +333,7 @@ h4{
 
 :root{
     /*===== Colores =====*/
-    --first-color: #1A73E8;
+    --first-color: #40CB99;
     --input-color: #80868B;
     --border-color: #DADCE0;
   
@@ -398,7 +398,7 @@ h4{
     left: 1rem;
     top: 1rem;
     padding: 0 .25rem;
-    background-color: #fff;
+    background-color: rgb(59, 59, 59);
     color: var(--input-color);
     font-size: var(--normal-font-size);
     transition: .3s;
@@ -459,7 +459,7 @@ h4{
 
   .addcommentbtn{
      padding: 10px 20px;
-     background-color: #3359de;
+     background-color: #40CB99;
      color: white;
      border-radius: 4px;
      border: none;
@@ -486,7 +486,7 @@ h4{
   }
 
   .text-primary{
-      color: #3359de;
+      color: #40CB99e;
   }
 
   .b-tex{
@@ -545,7 +545,7 @@ h4{
       font-size: 35px;
       position: absolute;
       border: none;
-      color: #3359de;
+      color: #40CB99;
       left: 20px;
       font-weight: bold;
   }
@@ -559,7 +559,7 @@ h4{
     top: 0px;
     font-weight: bold;
     border: none;
-    color: #3359de;
+    color: #40CB99;
   }
 
   .dots-cont{
@@ -574,13 +574,13 @@ h4{
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background-color: #C4C4C4;
+      background-color: #494848;
       cursor: pointer;
       margin-right: 15px;
     }
     
     .active-dot{
-      background-color: #3359de;
+      background-color: #40CB99;
   }
   .fa-arrow-right{
       position: relative;
@@ -591,7 +591,7 @@ h4{
       border: none;
       background-color: transparent;
       font-size: 25px;
-      color:#3359de;
+      color:#40CB99;
       font-weight: bold;
   }
 
@@ -646,9 +646,9 @@ h4{
 }
 
 .myp:hover{
-    background-color: white !important;
-    color: #3359de !important;
-    outline-color: #3359de;
+    background-color: rgb(44, 43, 43) !important;
+    color: #40CB99 !important;
+    outline-color: #40CB99;
     outline-style: double;
     outline-width: 3px;
     border: none !important;
@@ -661,7 +661,7 @@ h4{
 }
 
 .hire,.sendbtn,.demo-btn,.download-btn{
-    box-shadow: 5px 5px 10px #3359de;
+    box-shadow: 5px 5px 10px #40CB99;
 }
 
 .contact-social>div>button{
@@ -669,26 +669,26 @@ h4{
 }
 
 .contact-social>div>button:hover{
-    text-shadow: 5px 5px 10px #3359de !important;
+    text-shadow: 5px 5px 10px #40CB99 !important;
     transform: scale(1.2);
 }
 
 .hire:hover,.btn:first-child{
     background-color: white !important;
-    color: #3359de !important;
-    outline-color: #3359de;
+    color: #40CB99 !important;
+    outline-color: #40CB99;
     outline-style: double;
     outline-width: 3px;
 }
 
 .btn:first-child:hover{
-    background-color: whitesmoke !important;
+    background-color: rgb(48, 47, 47) !important;
 }
 
 .active-link{
-    color: #3359de !important;
+    color: #40CB99 !important;
     font-size: bold !important;
-    text-shadow: 5px 5px 5px #3359de;
+    text-shadow: 5px 5px 5px #40CB99;
 }
 
 .demo-btn{
@@ -701,11 +701,11 @@ h4{
     border: none;
 border-radius: 5px;
 color: white;
-    background-color: #3359de !important;
+    background-color: #40CB99 !important;
 }
 
 .active-port{
-    color: #3359de !important;
+    color: #40CB99!important;
     font-weight: bold !important;
 }
 
@@ -727,7 +727,7 @@ color: white;
 
 .navbars {
     overflow: hidden ;
-    background-color: white;
+    background-color: rgb(54, 53, 53);
     position: fixed;
     bottom: 0px;
     width: 100vw;
@@ -739,7 +739,7 @@ color: white;
 
   .navbars-cont{
     overflow: hidden;
-    background-color: rgb(255, 251, 251);
+    background-color: rgb(29, 28, 28);
     position: fixed;
     bottom: 0px;
     width: 100vw;
@@ -760,7 +760,7 @@ color: white;
   }
   
   .navbars a:hover {
-    background: #f1f1f1;
+    background: #252525;
     color: black;
   }
 
@@ -973,14 +973,14 @@ color: white;
         left: 0px;
         top: 60px;
         z-index: 10;
-        color: #3359de !important;
+        color: #40CB99 !important;
     }
   
     .right-slide{
         right: 0px;
         top: 60px;
         z-index: 10;
-        color: #3359de !important;
+        color: #40CB99 !important;
     }
 
    .slide-show-cont{
@@ -1176,7 +1176,7 @@ img {vertical-align: middle;}
   width: auto;
   padding: 10px;
   margin-top: -22px;
-  color: hsl(227, 72%, 54%);
+  color: #40CB99;
   font-weight: bold;
   font-size: 36px;
   transition: 0.6s ease;
@@ -1226,7 +1226,7 @@ img {vertical-align: middle;}
   height: 15px;
   width: 15px;
   margin: 0 2px;
-  background-color: #bbb;
+  background-color: rgb(82, 79, 79);
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;

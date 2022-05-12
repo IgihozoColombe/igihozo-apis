@@ -2,7 +2,7 @@
     position: relative;
     z-index: 1;
     display: block;
-    background: #FFFFFF;
+    background: #4b4b4b;
     min-width: 270px;
     height: 470px; 
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
@@ -56,7 +56,7 @@
   .post-module .post-content {
     position: absolute;
     bottom: 0;
-    background: #FFFFFF;
+    background: #424242;
     width: 100%;
     padding: 30px;
     box-sizing: border-box;
@@ -101,13 +101,13 @@
   }
   .post-module .post-content .post-meta {
     margin: 30px 0 0;
-    color: #999999;
+    color: #525050;
   }
   .post-module .post-content .post-meta .timestamp {
     margin: 0 16px 0 0;
   }
   .post-module .post-content .post-meta a {
-    color: #999999;
+    color: #575353;
     text-decoration: none;
   }
   .hover .post-content .description {
@@ -171,7 +171,7 @@
   }
 
   span:hover{
-    color: blue;
+    color: #40CB99;
   }
 
   .blog-modal{
@@ -187,7 +187,7 @@
   .modal-elem{
     margin: 40px auto;
     border-radius: 10px;
-    background-color: #ffff;
+    background-color: rgb(34, 33, 33);
     width: 85%;
     padding: 10px;
     overflow: auto;
@@ -260,7 +260,7 @@
   }
 
   .login-user-form>form{
-    background-color: white !important;
+    background-color: rgb(73, 71, 71) !important;
   }
 
   #loginError{
@@ -286,7 +286,7 @@
 
   
 .dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
+  background-color: #40CB99;
 }
 
 .dropdown {
@@ -297,7 +297,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: #222121;
   min-width: 160px;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -322,7 +322,7 @@
   width: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 1px solid #2980B9;
+  border: 1px solid #40CB99;
 }
 
 .comment-one{
@@ -335,7 +335,7 @@
 }
 
 .header-title{
-  border-bottom: 1px solid #2980B9;
+  border-bottom: 1px solid #40CB99;
   margin-bottom: 10px;
 }
 
@@ -365,7 +365,7 @@
    left: 100px;
 }
    .header-title>h4>button:hover{
-     color: #2980B9;
+     color: #40CB99;
    }
 
    .header-title>h4>button:last-child{
@@ -378,7 +378,7 @@
 
 
    .dropbtn {
-    background-color: #4CAF50;
+    background-color: #40CB99;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -394,7 +394,7 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #363636;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -407,7 +407,7 @@
     display: block;
   }
   
-  .dropdown-content a:hover {background-color: #f1f1f1}
+  .dropdown-content a:hover {background-color: #303030}
   
   .dropdown:hover .dropdown-content {
     display: block;
@@ -429,7 +429,7 @@
   margin: 50px 0px;
 }
 .card {
-  background-color: #fff;
+  background-color: rgb(14, 13, 13);
   border-radius: 10px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -449,7 +449,7 @@
   min-height: 250px;
 }
 .tag {
-  background-color: #ccc;
+  background-color: rgb(14, 13, 13);
   color: #fff;
   border-radius: 50px;
   font-size: 12px;
@@ -510,8 +510,8 @@
 }
 
 .codes{
-  background-color: hsl(0, 0%, 97%);
-  color: rgba(0, 0, 0, 0.822);
+  background-color: hsl(0, 1%, 28%);
+  color: rgba(172, 170, 170, 0.822);
   padding: 20px;
   border-radius: 4px;
 }
@@ -537,12 +537,12 @@
 }
 
 .dots:hover{
-  background-color: lavender;
+  background-color: rgb(190, 190, 197);
 }
 
 .menusss{
   border-radius: 4px;
-  background-color: white;
+  background-color: rgb(46, 44, 44);
   width: 180px;
   float: right;
   border: 1px solid gray;
