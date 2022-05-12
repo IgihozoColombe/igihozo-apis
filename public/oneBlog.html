@@ -206,7 +206,7 @@ function isLogged(username){
 
  if(token){
 
-  fetch("user/info/loggedinuser", {
+  fetch("/user/info/loggedinuser", {
     method: 'GET',
     headers: {
         'Authorization': token
@@ -239,7 +239,7 @@ window.onload = function(){
 function getAllUsers(id,ids){
   // let token = localStorage.getItem("token");
 
-  fetch("user/users/"+id, {
+  fetch("/user/users/"+id, {
     method: 'GET'
   })
   .then((res) => res.json())  
@@ -259,7 +259,7 @@ function getSingleBlog(){
   let token = localStorage.getItem("token");
   
 if(token){
-  fetch("user/info/loggedinuser", {
+  fetch("/user/info/loggedinuser", {
     method: 'GET',
     headers: {
       'Authorization': token
@@ -441,14 +441,16 @@ function login(){
 
   if(isValid == true){
     fetch("/blogs/"+id+"/comment", {
-                method: 'PATCH',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': token
                 },
                 body: JSON.stringify({
                     userId: userId,
-                    comment: comment
+                    comment: {
+                      
+                    }comment
                 })
             }).then((res) => res)
             .then((data) =>{
@@ -510,7 +512,7 @@ if(c){
   }
 
   fetch(`/blogs/${id}/likes`, {
-                method: 'PATCH',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': token

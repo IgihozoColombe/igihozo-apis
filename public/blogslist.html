@@ -184,7 +184,7 @@ function isLogged(username){
 
  if(token){
 
-  fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/info/loggedinuser", {
+  fetch("/user/info/loggedinuser", {
     method: 'GET',
     headers: {
         'Authorization': token
@@ -231,7 +231,7 @@ window.onload = function(){
                 <div class="user">
                   <img src="../images/pic.jpg" alt="" class="img-ppp" />
                   <div class="user-info">
-                    <h5>Emmanuel Dufitumukiza</h5>
+                    <h5>Igihozo Colombe</h5>
                     <small>${new Date(blogs[i].createdAt).toLocaleDateString()}</small>
                   </div>
                 </div>

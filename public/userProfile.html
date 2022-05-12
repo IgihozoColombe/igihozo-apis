@@ -252,7 +252,7 @@ fetch(CLOUDINARY_URL, {
     let id = document.getElementById("id").innerHTML;
     let token = localStorage.getItem("token");
 
-    fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/", {
+    fetch("", {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -273,7 +273,7 @@ fetch(CLOUDINARY_URL, {
    function getUser(){
     let token = localStorage.getItem("token");
   if(token){
-    fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/info/loggedinuser", {
+    fetch("/user//info/loggedinuser", {
       method: 'GET',
       headers: {
         'Authorization': token
@@ -323,14 +323,14 @@ fetch(CLOUDINARY_URL, {
       let token = localStorage.getItem("token");
 
       document.getElementById("currError").style.display = "none";
-      fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/", {
-                method: 'PATCH',
+      fetch("user/changePassword", {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': token
                 },
                 body: JSON.stringify({
-                    currentPassword: currPass,
+                    oldPassword: currPass,
                     password: pass
                 })
             }).then((res) => res.json())
@@ -365,7 +365,7 @@ function isLogged(){
 
  if(token){
 
-  fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/info/loggedinuser", {
+  fetch("user/info/loggedinuser", {
     method: 'GET',
     headers: {
         'Authorization': token
