@@ -142,6 +142,15 @@ exports.updateUser=async(req,res)=>{
      }
  }
  
+ exports.getUserById=async(req,res)=>{
+  try {
+      const user = await User.findById(req.params.id);
+      res.send(user);
+    } catch {
+      res.status(404);
+      res.send({ error: "User doesn't exist!" });
+    }
+}
  exports.getUserInfo = async(req,res)=>{
     try {
       let user = await User.findById(req.user);

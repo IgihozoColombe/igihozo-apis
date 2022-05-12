@@ -189,9 +189,14 @@ function isLogged(username){
    document.getElementById("profileauth").style.display = "none"
  }
 }
-
 window.onload = function(){
-  isLogged('')
+  let token = localStorage.getItem("token")
+  if(!token){
+      logout();
+  }
+getBlogs()
+}
+function getBlogs(){
 
   fetch("/blogs", {
     method: 'GET'

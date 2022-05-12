@@ -140,9 +140,11 @@
   async function registerUser(event){
   
   event.preventDefault();
-  
+  let name = document.getElementById("name").value.trim();
     let emails = document.getElementById("email").value.trim();
+    let usernm = document.getElementById("username").value.trim();
     let pass = document.getElementById("password").value;
+
   
     const result=await fetch("/users/signup", {
                   method: 'POST',
@@ -150,7 +152,9 @@
                       'Content-Type': 'application/json',
                   },
                   body: JSON.stringify({
+                    name:name,
                       email: emails,
+                      username:usernm,
                       password: pass
                   })
               }).then((res) => res.json())

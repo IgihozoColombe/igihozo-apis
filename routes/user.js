@@ -11,6 +11,7 @@ router.get('/',(req,res) => {
 router.post('/signup',UserController.createUser)
 router.post('/signin',UserController.login)
 router.get('/users',requireLogin,UserController.getAllUsers)
+router.get("/:id",requireLogin,UserController.getUserById);
 router.put('/updateUser',requireLogin,UserController.updateUser)
 router.put('/changePassword',requireLogin,UserController.changePassword)
 router.get("/loggedinuser",requireLogin,UserController.getUserInfo)

@@ -229,7 +229,23 @@ window.onload = function(){
   getSingleBlog()
 }
 
+function getAllUsers(id,ids){
+  // let token = localStorage.getItem("token");
 
+  fetch("users/"+id, {
+    method: 'GET',
+    headers: {
+      'Authorization': token
+    }
+  })
+  .then((res) => res.json())  
+    .then((user) =>{
+     let all = document.getElementsByClassName(ids);
+     for(let a=0; a<all.length; a++){
+      document.getElementsByClassName(ids)[a].innerHTML = user?.username;
+     }
+    });
+}
 function getSingleBlog(){
   let url = window.location.href;
   let arrs = url.split("=");

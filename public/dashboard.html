@@ -212,9 +212,13 @@ window.onload = function(){
 }
 
   function getBlogs(){
+    let token = localStorage.getItem("token")
     document.getElementById("sales-details").innerHTML = "";
     fetch("/blogs", {
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      'Authorization': token
+  }
   })
   .then((res) => res.json())
     .then((blogs) =>{
