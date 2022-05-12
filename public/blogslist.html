@@ -49,23 +49,7 @@
     </div>
 
   
-    <div class="left-side-bar">
 
-        <div class="logo-cont">
-            
-        </div>
-
-        <div class="contact-social">
-            <div><button><i class="fa-brands fa-linkedin-in"></i></button></div>
-            <div><button><i class="fa-brands fa-twitter"></i></button></div>
-            <div><button><i class="fa-brands fa-github"></i></button></div>
-            <div><button><i class="fa-brands fa-instagram"></i></button></div>
-        </div>
-
-        <div class="bottom-line">
-        </div>
-
-    </div>
 
     <div class="right-cont">
         
@@ -77,7 +61,7 @@
       
        
             
-            <!-- <div class="column">
+            <div class="column">
                 <div class="post-module">
                   <div class="thumbnail"><img src="../images/js.jpg"></div>
                   <div class="post-content">
@@ -98,7 +82,7 @@
               </div> -->
 
 
-          <!-- </div> -->
+          <!-- </div>
 
     </div>
 
@@ -149,7 +133,7 @@
     <i class="fa fa-sign-in"></i> Login
     </a>
     <div class="closeBtn">
-      <!-- <a href="#news"><i class="fa-moon uil uil-moon change-theme"></i></a> -->
+      <a href="#news"><i class="fa-moon uil uil-moon change-theme"></i></a>
       <a onclick="hideMenu()"><i class="fa fa-close change-theme"></i></a>
     </div>
     </div>
@@ -200,7 +184,7 @@ function isLogged(username){
 
  if(token){
 
-  fetch("user/info/loggedinuser", {
+  fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/info/loggedinuser", {
     method: 'GET',
     headers: {
         'Authorization': token

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <script src="https://kit.fontawesome.com/a05ef9628f.js" crossorigin="anonymous"></script> 
+    <link
+    rel="stylesheet"
+    href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+  />
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/skills.css">
+    <link rel="stylesheet" href="../css/blogs.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="links-cont">
+            <a href="./index.html">Home</a>
+            <a href="./index.html#aboutme">About me</a>
+            <a href="./index.html#portfolio">Portfolio</a>
+            <a href="./index.html#skills">Skills</a>
+            <a href="./index.html#contactme">Contact me</a>
+            <a href="./blogs.html" class="active-link">Blogs</a>
+            <div class="moon">
+                <button><i class="fa-moon uil uil-moon change-theme"></i></button>
+            </div>
+           <div>
+            <a id="logSign" style="text-decoration: none;" href="./login.html"><button class="btn"><i class="fa fa-sign-in"></i> Login/Signup</button></a>
+            <div id="profileauth" class="loggedUser">
+              <div class="dropdown  ">
+              <div style="display: flex;">
+                <div class="imggg">
+                  <img src="../images/me.png" alt="">
+                </div>
+                &nbsp;<p style="font-weight: bold;font-style: italic;" id="username-display"></p>
+              </div>
+                
+                <div class="dropdown-content">
+                  <a href="#">Your Profile</a>
+                  <a href="#">Settings</a>
+                <a href="#" onclick="logout()">Logout</a>
+                </div>
+              </div>
+            </div>
+
+           </div>
+        </div>
+    </div>
+
+  
+    <div class="left-side-bar">
+
+        <div class="logo-cont">
+            
+        </div>
+
+        <div class="contact-social">
+            <div><button><i class="fa-brands fa-linkedin-in"></i></button></div>
+            <div><button><i class="fa-brands fa-twitter"></i></button></div>
+            <div><button><i class="fa-brands fa-github"></i></button></div>
+            <div><button><i class="fa-brands fa-instagram"></i></button></div>
+        </div>
+
+        <div class="bottom-line">
+        </div>
+
+    </div>
+
+    <div class="right-cont">
+  
+        <div class="blog-cont">
+            <p class="description" style="opacity: 1;">
+
+                <div class="img-blog">
+                    <img src="../images/blog.png" alt="">
+                </div>
+                          
+                <p class="description">
+                    <b>JavaScript</b> Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                <a href="https://www.youtube/javascriptutotial/watch/ds.com">https://www.youtube/javascriptutotial/watch/ds.com</a>
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                
+                used Programming languages JavaScript Is one of the most popular
+                </p>
+
+                <div class="img-blog">
+                    <img src="../images/blog.png" alt="">
+                </div>
+
+               <p class="description">
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+
+                <a href="https://www.youtube/javascriptutotial/watch/ds.com">https://www.youtube/javascriptutotial/watch/ds.com</a>
+
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+               </p>
+
+                <div class="img-blog">
+                    <img src="../images/blog.png" alt="">
+                </div>
+
+               <p class="description">
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages
+                used Programming languages JavaScript Is one of the most popular
+                <b>used Programming languages JavaScript Is one of the most popular</b>
+                used Programming languages JavaScript Is one of the most popular
+                used Programming languages
+
+                <i>used Programming languages JavaScript Is one of the most popular</i>
+                used Programming languages JavaScript Is one of the most popularused Programming languages JavaScript Is one of the most popular
+               </p>
+            </p>
+
+            <br/><div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> 6 mins ago</span>
+                &nbsp;    &nbsp;    &nbsp;<span class="comments"><i class="fa-solid fa-comment"></i> 34</span>
+                &nbsp;    &nbsp;
+                <span class="comments"><i class="fa fa-thumbs-up"></i> 156</span>
+            </div>
+
+            <div class="comment-area">
+                <div class="form__div textarea-cont form__div2">
+                  <textarea id="message" onkeyup="validateMessage()" onblur="validateMessage()" class="form__input commentinput" placeholder=" "></textarea>
+                  <label for="" id="messagelabel" class="form__label">Write your comment</label>
+                  <p id="messageError2"></p>
+                </div>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="commentBtn">
+                    <button onclick="login()" class="addcommentbtn"><i class="fa-solid fa-comment"></i> Add Comment</button>
+                </div>
+            </div>
+
+            <div class="comments-section">
+              <div class="header-title">
+                <h4>All Comments (4) <button id="showIc" onclick="toggleComments()"><i class="fa fa-angle-right"></i></button> <button id="hideIc" onclick="hideComments()"><i class="fa fa-angle-right"></i></button> </h4>
+              </div>
+
+              <div id="allComments">
+             <div class="comment-one">
+               <div class="profile-commenter">
+                 <img src="../images/pic.jpg" alt="">
+               </div>
+
+               <div class="user-info">
+                 <p style="font-weight: bold;">Manzi James</p>
+                 <p style="position: relative;top: -12px;">I liked your article, I like javascript as my favorite language keep up, may be goood to add videos in your article next time.</p>
+               </div>
+             </div>
+
+             <div class="comment-one">
+              <div class="profile-commenter">
+                <img src="../images/me.png" alt="">
+              </div>
+
+              <div class="user-info">
+                <p style="font-weight: bold;">Manzi James</p>
+                <p style="position: relative;top: -12px;">I liked your article, I like javascript as my favorite language keep up, may be goood to add videos in your article next time.</p>
+              </div>
+            </div>
+
+
+            <div class="comment-one">
+              <div class="profile-commenter">
+                <img src="../images/pic.jpg" alt="">
+              </div>
+
+              <div class="user-info">
+                <p style="font-weight: bold;">Manzi James</p>
+                <p style="position: relative;top: -12px;">I liked your article, I like javascript as my favorite language keep up, may be goood to add videos in your article next time.</p>
+              </div>
+            </div>
+
+
+            <div class="comment-one">
+              <div class="profile-commenter">
+                <img src="../images/me.png" alt="">
+              </div>
+
+              <div class="user-info">
+                <p style="font-weight: bold;">Manzi James</p>
+                <p style="position: relative;top: -12px;">I liked your article, I like javascript as my favorite language keep up, may be goood to add videos in your article next time.</p>
+              </div>
+            </div>
+          </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="navbars-cont" id="menuBottom">
+
+        <div class="top-one-social">
+             <a href="./index.html#" onclick="hideMenu()">
+              <div>
+                <i class="fa fa-home change-theme"></i>
+                <p>Home</p>
+               </div>
+             </a>
+           <a href="./index.html#aboutme" onclick="hideMenu()">
+            <div>
+              <i class="fa fa-user change-theme"></i>
+              <p>About me</p>
+             </div>
+           </a>
+           <a href="./index.html#portfolio" onclick="hideMenu()">
+            <div>
+              <i class="change-theme fa-solid fa-diagram-project"></i>
+              <p>Portfolio</p>
+             </div>
+           </a>
+        </div>
+  
+        <div class="top-one-social">
+          <a href="./blogs.html">
+            <div>
+              <i class="change-theme fa-solid fa-blog"></i>
+              <p>Blogs</p>
+             </div>
+          </a>
+        <a href="./index.html#skills" onclick="hideMenu()">
+          <div>
+            <i class="change-theme fa-solid fa-graduation-cap"></i>
+            <p>Skills</p>
+           </div>
+        </a>
+         <a href="./index.html#contactme" onclick="hideMenu()">
+          <div>
+            <i class="uil uil-message change-theme"></i>
+            <p>Contact me</p>
+           </div>
+         </a>
+     </div>
+     <a href="./login.html" class="closeBtn" style="float: left;margin-left: 37px;margin-top: 3px;">
+        <i class="fa fa-sign-in"></i> Login
+        </a>
+      <div class="closeBtn">
+        <!-- <a href="#news"><i class="fa-moon uil uil-moon change-theme"></i></a> -->
+        <a onclick="hideMenu()"><i class="fa fa-close change-theme"></i></a>
+      </div>
+      </div>
+      <div class="navbars">
+        <a href="#home">
+          <div class="logo-cont2">
+              
+          </div>
+        </a>
+      <div>
+        <form action="">
+          <a href="#news"><i class="fa-moon uil uil-moon change-theme"></i></a>
+          <!-- <input type="checkbox" id="menus">
+        <label for="menus">toggle</label> -->
+        <a onclick="menuBottom()"><i class="fa fa-bars change-theme"></i></a>
+        </form>
+      </div>
+      </div>
+    </div>
+
+    <div class="login-modal" id="mymodalcont">
+      <div class="l-form login-user-form" id="login-modal">
+        <form onsubmit="loginUser(event)" class="form">
+            <h1 class="form__title">Login</h1>
+
+            <div class="form__div">
+              <input onkeyup="validateEmail()" onblur="validateEmail()" id="useremail" type="text" class="form__input" placeholder=" ">
+              <label for="" id="emaillabel" class="form__label">Your Email*</label>
+          </div>
+          <span id="emailError"></span>
+
+            <div class="form__div">
+                <input onblur="validatePassword()" onkeyup="validatePassword()" id="password" type="password" class="form__input" placeholder=" ">
+                <label for="" id="passwordLabel" class="form__label">Password</label>
+            </div>
+          <span id="passwordError"></span>
+
+          <div id="loginError">
+         <span>*Incorrect email or password*</span><br>
+          </div>
+
+            <input onclick="loginUser(event)" type="submit" class="form__button" value="Sign In">
+
+            <p class="dont">Don't have an account yet? <a href="./signup.html">Signup</a></p>
+        </form>
+    </div>
+    </div>
+
+    <script>
+          function menuBottom(){
+    document.getElementById("menuBottom").style.display = "block"
+  }
+
+  function validateEmail(){
+    let email = document.getElementById("useremail").value.trim();
+    document.getElementById("loginError").style.display = "none";
+
+    if(email.length == 0){
+      document.getElementById("emailError").style.display = "block"
+      document.getElementById("useremail").style.borderColor="orangered"
+      document.getElementById("emaillabel").style.color="orangered"
+      document.getElementById("emailError").innerHTML = "Email is required*"
+      return false;
+    }
+
+    if(email.length>0){
+
+
+if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+{
+      document.getElementById("emailError").style.display = "none"
+      document.getElementById("useremail").style.borderColor="forestgreen"
+      document.getElementById("emaillabel").style.color="forestgreen"
+      document.getElementById("emailError").innerHTML = ""
+      return true;
+}
+document.getElementById("emailError").style.display = "block"
+      document.getElementById("useremail").style.borderColor="orangered"
+      document.getElementById("emaillabel").style.color="orangered"
+      document.getElementById("emailError").innerHTML = "Invalid Email address format"
+      return false;
+    }
+  }
+
+  function validatePassword(){
+  document.getElementById("loginError").style.display = "none";
+  let password = document.getElementById("password").value;
+
+        if(password.length == 0){
+          document.getElementById("passwordError").style.display = "block"
+          document.getElementById("password").style.borderColor="orangered"
+          document.getElementById("passwordLabel").style.color="orangered"
+          document.getElementById("passwordError").innerHTML = "Password is required*"
+      return false;
+        }
+        if(password.length>0){
+          document.getElementById("passwordError").style.display = "none"
+          document.getElementById("password").style.borderColor="forestgreen"
+          document.getElementById("passwordLabel").style.color="forestgreen"
+          document.getElementById("passwordError").innerHTML = ""
+      return true;
+        }
+ }
+  
+  function hideMenu(){
+    document.getElementById("menuBottom").style.display = "none"
+  }
+
+  var modal = document.getElementById('login-modal');
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        document.getElementById("mymodalcont").style.display = "none";
+    }
+}
+
+function login(){
+  if(localStorage.getItem("loggedInUserEmail")?.trim() == null){
+    document.getElementById("mymodalcont").style.display = "block"
+    modal.style.display = "flex";
+    return ;
+  }
+
+  validateMessage()
+}
+
+function validateMessage(){
+  let message = document.getElementById("message").value.trim();
+
+  if(message.length == 0){
+      document.getElementById("messageError2").style.display = "block"
+      document.getElementById("message").style.borderColor="orangered"
+      document.getElementById("messagelabel").style.color="orangered"
+      document.getElementById("messageError2").innerHTML = "Message is required*"
+      return ;
+    }
+    if(message.length>0){
+      document.getElementById("messageError2").style.display = "none"
+      document.getElementById("message").style.borderColor="forestgreen"
+      document.getElementById("messagelabel").style.color="forestgreen"
+      document.getElementById("messageError2").innerHTML = ""
+      return ;
+    }
+}
+
+function loginUser(e){
+  e.preventDefault();
+  document.getElementById("loginError").style.display = "none";
+
+let isValidEmail = validateEmail();
+let isValidPassword = validatePassword();
+
+if(isValidEmail == true && isValidPassword == true){
+
+  let emails = localStorage.getItem("email")
+  let pass = localStorage.getItem("password");
+  let email = document.getElementById("useremail").value.trim();
+  let password = document.getElementById("password").value;
+
+  if(emails == email && pass == password){
+   localStorage.setItem("loggedInUserEmail", localStorage.getItem("email"))
+   modal.style.display = "none";
+   document.getElementById("mymodalcont").style.display = "none"
+   isLogged();
+  }
+  if(emails != email || pass != password){
+     return document.getElementById("loginError").style.display = "flex";
+  }
+}
+}
+
+function logout(){
+  localStorage.removeItem("loggedInUserEmail");
+ return isLogged();
+}
+
+function isLogged(){
+
+ let email = localStorage.getItem("loggedInUserEmail")
+
+ if(email){
+  document.getElementById("logSign").style.display = "none"
+   document.getElementById("profileauth").style.display = "flex"
+   document.getElementById("username-display").innerHTML  = localStorage.getItem("username")
+   return ;
+ }else{
+  document.getElementById("logSign").style.display = "block"
+   document.getElementById("profileauth").style.display = "none"
+ }
+}
+
+window.onload = function(){
+  isLogged()
+}
+
+function toggleComments(){
+  document.getElementById("allComments").style.display = "block"
+  document.getElementById("showIc").style.display = "none"
+  document.getElementById("hideIc").style.display = "inline"
+}
+
+function hideComments(){
+  document.getElementById("allComments").style.display = "none"
+  document.getElementById("showIc").style.display = "inline"
+  document.getElementById("hideIc").style.display = "none"
+}
+
+    </script>
+
+</body>
+</html>
