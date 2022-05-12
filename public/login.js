@@ -31,4 +31,42 @@ event.preventDefault();
         
          
 }
-// }
+function logout(){
+  localStorage.removeItem("token");
+ return isLogged();
+}
+
+function isLogged(username){
+
+ let token = localStorage.getItem("token")
+
+ if(token){
+
+  fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/info/loggedinuser", {
+    method: 'GET',
+    headers: {
+        'Authorization': token
+    }
+  })
+  .then((res) => res.json())
+    .then((res) =>{
+      if(res.username){
+        document.getElementById("logSign").style.display = "none"
+   document.getElementById("profileauth").style.display = "flex"
+   document.getElementById("username-display").innerHTML  = res.username;
+   window.location = "./blogs.html"
+   return ;
+      }else{
+        document.getElementById("logSign").style.display = "block"
+   document.getElementById("profileauth").style.display = "none"
+      }
+    });
+ }if(!token){
+  document.getElementById("logSign").style.display = "block"
+   document.getElementById("profileauth").style.display = "none"
+ }
+}
+
+window.onload = function(){
+  isLogged('')
+}
