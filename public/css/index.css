@@ -835,6 +835,8 @@ color: white;
     }
     .navbar{
         display: none !important;
+        background-color: #494848;
+        color: #fff;
     }
     .left-side-bar{
         display: none !important;
