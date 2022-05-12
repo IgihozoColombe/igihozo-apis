@@ -253,7 +253,7 @@ fetch(CLOUDINARY_URL, {
     let token = localStorage.getItem("token");
 
     fetch("", {
-                method: 'PATCH',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': token
