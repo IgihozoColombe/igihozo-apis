@@ -23,11 +23,9 @@
             <a href="./index.html#skills">Skills</a>
             <a href="./index.html#contactme">Contact me</a>
             <a href="./blogs.html" class="active-link">Blogs</a>
-            <div class="moon">
-                <button><i class="fa-moon uil uil-moon change-theme"></i></button>
-            </div>
+       
            <div>
-            <a id="logSign" style="text-decoration: none;" href="./login.html"><button class="btn"><i class="fa fa-sign-in"></i> Login/Signup</button></a>
+            <a id="logSign" style="text-decoration: none;" href="./login.html"><button class="btn">Login/Signup</button></a>
             <div id="profileauth" class="loggedUser">
               <div class="dropdown  ">
               <div style="display: flex;">
@@ -70,7 +68,7 @@
           
           </div>
 
-          <br/><div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> <span id="time-posted"></span></span>
+          <br/><div class="post-meta"><span class="timestamp"><i class="fa fa-clock-"></i> <span id="time-posted"></span></span>
             <!-- &nbsp;    &nbsp;    &nbsp;<span class="comments"><i class="fa-solid fa-comment"></i> 34</span> -->
             &nbsp;    &nbsp;
             <span onclick="addLike()" class="comments likesss"><i class="fa fa-thumbs-up"></i> <span id="totalLikes"></span> </span>
@@ -78,7 +76,7 @@
 
         <div class="comment-area">
             <div class="form__div textarea-cont form__div2">
-              <textarea id="message" onkeyup="validateMessage()" onblur="validateMessage()" class="form__input commentinput" placeholder=" "></textarea>
+              <textarea id="text" onkeyup="validateMessage()" onblur="validateMessage()" class="form__input commentinput" placeholder=" "></textarea>
               <label for="" id="messagelabel" class="form__label">Write your comment</label>
               <p id="messageError2"></p>
             </div>
@@ -253,7 +251,10 @@ if(token){
 }
 
   fetch("/blogs/"+id, {
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      'Authorization': token
+    }
   })
   .then((res) => res.json())  
     .then((blogs) =>{
@@ -383,18 +384,18 @@ function hideComments(){
 }
 
 function validateMessage(){
-  let message = document.getElementById("message").value.trim();
+  let message = document.getElementById("text").value.trim();
 
   if(message.length == 0){
       document.getElementById("messageError2").style.display = "block"
-      document.getElementById("message").style.borderColor="orangered"
+      document.getElementById("text").style.borderColor="orangered"
       document.getElementById("messagelabel").style.color="orangered"
       document.getElementById("messageError2").innerHTML = "Message is required*"
       return false;
     }
     if(message.length>0){
       document.getElementById("messageError2").style.display = "none"
-      document.getElementById("message").style.borderColor="forestgreen"
+      document.getElementById("text").style.borderColor="forestgreen"
       document.getElementById("messagelabel").style.color="forestgreen"
       document.getElementById("messageError2").innerHTML = ""
       return true;
@@ -413,13 +414,15 @@ function login(){
   }
 
   let isValid = validateMessage();
-  let comment = document.getElementById("message").value.trim();
+  let text = document.getElementById("text").value.trim();
   let token = localStorage.getItem("token");
   let userId = localStorage.getItem("userId");
   let url = window.location.href;
   let arrs = url.split("=");
   let id = arrs[1];
-
+let comment={
+  text: text,
+}
   if(isValid == true){
     fetch("/blogs/"+id+"/comment", {
                 method: 'PUT',
@@ -429,14 +432,12 @@ function login(){
                 },
                 body: JSON.stringify({
                     userId: userId,
-                    comments: {
-                      text: comment
-                    }
+                    comments: comment
                 })
             }).then((res) => res)
             .then((data) =>{
              console.log(data)
-             document.getElementById("message").value = "";
+             document.getElementById("text").value = "";
              getSingleBlog();
              getAllUsers();
 
@@ -456,28 +457,6 @@ function toggleM(id){
   return document.getElementById(id).style.display = "block"
 }
 
-function deleteComment(ids){
-
-  let url = window.location.href;
-  let arrs = url.split("=");
-  let id = arrs[1];
-  let token = localStorage.getItem("token");
-
-  fetch(`/blogs/${id}/comment/${ids}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': token
-                }
-            }).then((res) => res)
-            .then((data) =>{
-            console.log(data)
-            document.getElementById(ids).style.display = "none";
-            getSingleBlog();
-            getAllUsers();
-            });
-}
-
 function addLike(){
   let url = window.location.href;
   let arrs = url.split("=");
@@ -492,7 +471,7 @@ if(c){
 }
   }
 
-  fetch(`/blogs/${id}/likes`, {
+  fetch(`/blogs/${id}/like`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

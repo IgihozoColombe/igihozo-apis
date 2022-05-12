@@ -144,7 +144,7 @@
     let emails = document.getElementById("email").value.trim();
     let pass = document.getElementById("password").value;
   
-    const result=await fetch("/users/signin", {
+    const result=await fetch("/users/signup", {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
