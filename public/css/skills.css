@@ -1,7 +1,7 @@
 .skill-bars{
     padding: 25px 30px;
     width: 100%;
-    background: #fffffd;
+    background: #505050;
     box-shadow: 5px 5px 20px rgba(207, 204, 204, 0.2);
     border-radius: 10px;
   }
@@ -28,7 +28,7 @@
   .skill-bars .bar .progress-line{
     height: 5px;
     width: 100%;
-    background: #f0f0f0;
+    background: #202020;
     position: relative;
     transform: scaleX(0);
     transform-origin: left;
@@ -48,7 +48,7 @@
     border-radius: 10px;
     transform: scaleX(0);
     transform-origin: left;
-    background: #6665ee;
+    background: #40CB99;
     animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
   }
   .bar .progress-line.html span{

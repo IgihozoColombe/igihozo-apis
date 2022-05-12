@@ -1,3 +1,6 @@
+body{
+  background-color: black;
+}
 .post-module {
     position: relative;
     z-index: 1;
