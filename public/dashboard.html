@@ -218,6 +218,7 @@ window.onload = function(){
   })
   .then((res) => res.json())
     .then((blogs) =>{
+      console.log(blogs)
         document.getElementById("totals").innerHTML = blogs.length;
           for(let i=0; i<blogs.length; i++){
            document.getElementById("sales-details").innerHTML += `

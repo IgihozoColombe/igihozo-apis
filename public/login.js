@@ -42,7 +42,7 @@ function isLogged(username){
 
  if(token){
 
-  fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/info/loggedinuser", {
+  fetch("user/info/loggedinuser", {
     method: 'GET',
     headers: {
         'Authorization': token

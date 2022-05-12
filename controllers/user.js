@@ -142,7 +142,21 @@ exports.updateUser=async(req,res)=>{
      }
  }
  
- 
+ exports.getUserInfo = async(req,res)=>{
+    try {
+      let user = await User.findById(req.user);
+      let result  = user;
+      return res.status(200).send({
+        _id: result?._id,
+        email: result?.email,
+        username: result?.username
+      
+      });
+    } catch (error) {
+      return res.status(404).send(error.message);
+    }
+  }
+
  exports.logout=async(req,res)=>{
    const refreshToken =req.user.token;
  jwtr.destroy(token)
