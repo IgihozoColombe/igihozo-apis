@@ -137,8 +137,8 @@
            
   // }
 
-  async function loginUser(event){
-    document.getElementById("loginError").style.display = "none";
+  async function registerUser(event){
+  
   event.preventDefault();
   
     let emails = document.getElementById("email").value.trim();
@@ -156,9 +156,9 @@
               }).then((res) => res.json())
               console.log(result.user.email);
               if(result.error){
-               return document.getElementById("loginError").style.display = "flex";
+           console.log(data.error);
               }else{
-                document.getElementById("loginError").style.display = "none";
+            
                 localStorage.setItem("token", result.token);
                 if(result.user.email == "igihozocolombe2003@gmail.com"){
                   return window.location = "./dashboard.html";
