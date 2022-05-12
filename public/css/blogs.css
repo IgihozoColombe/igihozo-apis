@@ -624,33 +624,3 @@ body{
 }
 
 
-@media screen and (max-width: 620px){
-  #blogsCntainer {
-    display: block !important;
-    padding-left: 20px;
-  }
-  .card {
-     width: 90% !important;
-  }
-}
-
-@media screen and (max-width: 620px){
-  @media screen and (min-width: 501px){
-    #blogsCntainer {
-      display: block !important;
-      padding-left: 23px;
-    }
-    .card {
-       width: 90% !important;
-    }
-  }
-}
-
-@media screen and (min-width: 621px){
- @media screen and (max-width: 1000px){
-  .container {
-    display: grid !important;
-    grid-template-columns: repeat(2, 2fr) !important;
-  }
- }
-}

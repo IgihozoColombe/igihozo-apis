@@ -1250,16 +1250,3 @@ img {vertical-align: middle;}
 }
 
 /* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
-
-@media screen and (min-width: 1100px) {
-    .slideshow-container{
-        margin-top: -50px;
-    }
-}
-
-:root{
-    --header-height: none !important;
-}
