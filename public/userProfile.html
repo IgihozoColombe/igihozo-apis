@@ -226,7 +226,7 @@ function upload(){
       let token = localStorage.getItem("token");
 
       document.getElementById("currError").style.display = "none";
-      fetch("user/changePassword", {
+      fetch("/user/changePassword", {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -268,7 +268,7 @@ function isLogged(){
 
  if(token){
 
-  fetch("user/info/loggedinuser", {
+  fetch("/user/info/loggedinuser", {
     method: 'GET',
     headers: {
         'Authorization': token

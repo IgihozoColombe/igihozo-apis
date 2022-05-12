@@ -201,7 +201,7 @@ function isLogged(username){
 
  if(token){
 
-  fetch("/user/info/loggedinuser", {
+  fetch("/users/loggedinuser", {
     method: 'GET',
     headers: {
         'Authorization': token
@@ -231,20 +231,6 @@ window.onload = function(){
   getSingleBlog()
 }
 
-function getAllUsers(id,ids){
-  // let token = localStorage.getItem("token");
-
-  fetch("/user/users/"+id, {
-    method: 'GET'
-  })
-  .then((res) => res.json())  
-    .then((user) =>{
-     let all = document.getElementsByClassName(ids);
-     for(let a=0; a<all.length; a++){
-      document.getElementsByClassName(ids)[a].innerHTML = user?.username;
-     }
-    });
-}
 
 function getSingleBlog(){
   let url = window.location.href;
@@ -254,7 +240,7 @@ function getSingleBlog(){
   let token = localStorage.getItem("token");
   
 if(token){
-  fetch("/user/info/loggedinuser", {
+  fetch("/users/loggedinuser", {
     method: 'GET',
     headers: {
       'Authorization': token
@@ -296,7 +282,7 @@ if(!blogs?.likes.includes(localStorage.getItem("id"))){
             document.getElementById("allComments").innerHTML += `
             <div class="comment-one">
            <div class="profile-commenter">
-             <img src="../images/pic.jpg" alt="">
+             <img src="./images/me.jpg" alt="">
            </div>
 
            <div class="user-info">
@@ -317,7 +303,7 @@ ${
               <div class="menusss" id="${blogs?.comments[j]?._id}">
                 <p class="delB" onclick="deleteComment('${blogs?.comments[j]?._id}')">Delete Comment</p>
                 </div>
-             <p style="position: relative;top: -12px;">${blogs?.comments[j]?.comment}</p>
+             <p style="position: relative;top: -12px;">${blogs?.comments[j]?.postedBy}</p>
            </div>
          </div>
             `

@@ -13,7 +13,7 @@ router.post('/signin',UserController.login)
 router.get('/users',requireLogin,UserController.getAllUsers)
 router.put('/updateUser',requireLogin,UserController.updateUser)
 router.put('/changePassword',requireLogin,UserController.changePassword)
-router.get("/info/loggedinuser",getLoggedUser,UserController.getUserInfo)
+router.get("/loggedinuser",requireLogin,UserController.getUserInfo)
 router.post('/logout',requireLogin,UserController.logout)
 module.exports=router
 
