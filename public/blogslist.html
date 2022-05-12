@@ -49,7 +49,18 @@
     </div>
 
   
+    <div class="left-side-bar">
 
+        <div class="logo-cont">
+            
+        </div>
+
+     
+
+        <div class="bottom-line">
+        </div>
+
+    </div>
 
     <div class="right-cont">
         
@@ -60,29 +71,7 @@
           </div>
       
        
-            
-            <div class="column">
-                <div class="post-module">
-                  <div class="thumbnail"><img src="../images/js.jpg"></div>
-                  <div class="post-content">
-                    <div class="category">Programming</div>
-                    <h1 class="title">JavaScript Tutorial</h1>
-                    <h2 class="sub_title">Best Tutorial For Beginners</h2>
-                    <p class="description" style="display: none; height: 100px; opacity: 1;">
-                      JavaScript Is one of the most popular
-                      used Programming languages
-                  </p>
-                    <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> 6 mins ago</span>
-                        <span class="comments"><i class="fa-solid fa-comment"></i> 34</span>
-                        &nbsp;
-                        <span class="comments"><i class="fa fa-thumbs-up"></i> 156</span>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
-
-          <!-- </div>
+           
 
     </div>
 
@@ -133,7 +122,7 @@
     <i class="fa fa-sign-in"></i> Login
     </a>
     <div class="closeBtn">
-      <a href="#news"><i class="fa-moon uil uil-moon change-theme"></i></a>
+      <!-- <a href="#news"><i class="fa-moon uil uil-moon change-theme"></i></a> -->
       <a onclick="hideMenu()"><i class="fa fa-close change-theme"></i></a>
     </div>
     </div>
@@ -184,7 +173,7 @@ function isLogged(username){
 
  if(token){
 
-  fetch("/user/info/loggedinuser", {
+  fetch("/info/loggedinuser", {
     method: 'GET',
     headers: {
         'Authorization': token
@@ -231,7 +220,7 @@ window.onload = function(){
                 <div class="user">
                   <img src="../images/pic.jpg" alt="" class="img-ppp" />
                   <div class="user-info">
-                    <h5>Igihozo Colombe</h5>
+                    <h5>Igihozo colombe</h5>
                     <small>${new Date(blogs[i].createdAt).toLocaleDateString()}</small>
                   </div>
                 </div>

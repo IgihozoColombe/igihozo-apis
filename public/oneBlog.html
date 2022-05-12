@@ -55,12 +55,7 @@
             
         </div>
 
-        <div class="contact-social">
-            <div><button><i class="fa-brands fa-linkedin-in"></i></button></div>
-            <div><button><i class="fa-brands fa-twitter"></i></button></div>
-            <div><button><i class="fa-brands fa-github"></i></button></div>
-            <div><button><i class="fa-brands fa-instagram"></i></button></div>
-        </div>
+     
 
         <div class="bottom-line">
         </div>
@@ -448,9 +443,9 @@ function login(){
                 },
                 body: JSON.stringify({
                     userId: userId,
-                    comment: {
-                      
-                    }comment
+                    comments: {
+                      text: comment
+                    }
                 })
             }).then((res) => res)
             .then((data) =>{
