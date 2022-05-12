@@ -206,7 +206,7 @@ function isLogged(username){
 
  if(token){
 
-  fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/info/loggedinuser", {
+  fetch("user/info/loggedinuser", {
     method: 'GET',
     headers: {
         'Authorization': token
@@ -239,7 +239,7 @@ window.onload = function(){
 function getAllUsers(id,ids){
   // let token = localStorage.getItem("token");
 
-  fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/"+id, {
+  fetch("user/users/"+id, {
     method: 'GET'
   })
   .then((res) => res.json())  
@@ -259,7 +259,7 @@ function getSingleBlog(){
   let token = localStorage.getItem("token");
   
 if(token){
-  fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/info/loggedinuser", {
+  fetch("user/info/loggedinuser", {
     method: 'GET',
     headers: {
       'Authorization': token
@@ -271,7 +271,7 @@ if(token){
     });
 }
 
-  fetch("https://emmanueldufitumukiza.herokuapp.com/api/blogs/"+id, {
+  fetch("/blogs/"+id, {
     method: 'GET'
   })
   .then((res) => res.json())  

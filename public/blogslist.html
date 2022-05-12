@@ -49,7 +49,23 @@
     </div>
 
   
+    <div class="left-side-bar">
 
+        <div class="logo-cont">
+            
+        </div>
+
+        <div class="contact-social">
+            <div><button><i class="fa-brands fa-linkedin-in"></i></button></div>
+            <div><button><i class="fa-brands fa-twitter"></i></button></div>
+            <div><button><i class="fa-brands fa-github"></i></button></div>
+            <div><button><i class="fa-brands fa-instagram"></i></button></div>
+        </div>
+
+        <div class="bottom-line">
+        </div>
+
+    </div>
 
     <div class="right-cont">
         
@@ -61,12 +77,17 @@
       
        
             
-            <div class="column">
+            <!-- <div class="column">
                 <div class="post-module">
-                  <!-- <div class="thumbnail"><img src="../images/js.jpg"></div> -->
+                  <div class="thumbnail"><img src="../images/js.jpg"></div>
                   <div class="post-content">
-                   
-                    
+                    <div class="category">Programming</div>
+                    <h1 class="title">JavaScript Tutorial</h1>
+                    <h2 class="sub_title">Best Tutorial For Beginners</h2>
+                    <p class="description" style="display: none; height: 100px; opacity: 1;">
+                      JavaScript Is one of the most popular
+                      used Programming languages
+                  </p>
                     <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> 6 mins ago</span>
                         <span class="comments"><i class="fa-solid fa-comment"></i> 34</span>
                         &nbsp;
@@ -74,10 +95,10 @@
                     </div>
                   </div>
                 </div>
-              </div> 
+              </div> -->
 
 
-          <!-- </div>
+          <!-- </div> -->
 
     </div>
 
@@ -179,7 +200,7 @@ function isLogged(username){
 
  if(token){
 
-  fetch("/info/loggedinuser", {
+  fetch("user/info/loggedinuser", {
     method: 'GET',
     headers: {
         'Authorization': token

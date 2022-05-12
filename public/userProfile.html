@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/a05ef9628f.js" crossorigin="anonymous"></script>
+    <!-- ===== CSS ===== -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+    <script src="https://kit.fontawesome.com/a05ef9628f.js" crossorigin="anonymous"></script> 
+    <link
+    rel="stylesheet"
+    href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/skills.css">
+    <link rel="stylesheet" href="../css/blogs.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="links-cont">
+            <a href="./index.html">Home</a>
+            <a href="./index.html#aboutme">About me</a>
+            <a href="./index.html#portfolio">Portfolio</a>
+            <a href="./index.html#skills">Skills</a>
+            <a href="./index.html#contactme">Contact me</a>
+            <a href="./blogs.html" class="active-link">Blogs</a>
+            <div class="moon">
+                <button><i class="fa-moon uil uil-moon change-theme"></i></button>
+            </div>
+           <div>
+            <a id="logSign" style="text-decoration: none;" href="./login.html"><button class="btn"><i class="fa fa-sign-in"></i> Login/Signup</button></a>
+            <div id="profileauth" class="loggedUser">
+              <div class="dropdown  ">
+              <div style="display: flex;">
+                <div class="imggg">
+                  <img src="../images/user.jpg" id="user-o-p" alt="">
+                </div>
+                &nbsp;<p style="font-weight: bold;font-style: italic;" id="username-display"></p>
+              </div>
+                
+                <div class="dropdown-content">
+                  <a href="./userProfile.html">Your Profile</a>
+                  <a href="#">Settings</a>
+                <a href="#" onclick="logout()">Logout</a>
+                </div>
+              </div>
+            </div>
+           </div>
+        </div>
+    </div>
+
+    <div class="left-side-bar">
+
+        <div class="logo-cont">
+            
+        </div>
+
+        <div class="contact-social">
+            <div><button><i class="fa-brands fa-linkedin-in"></i></button></div>
+            <div><button><i class="fa-brands fa-twitter"></i></button></div>
+            <div><button><i class="fa-brands fa-github"></i></button></div>
+            <div><button><i class="fa-brands fa-instagram"></i></button></div>
+        </div>
+
+        <div class="bottom-line">
+        </div>
+
+    </div>
+
+    <div class="right-cont">
+<div class="r-c-cont">
+    
+    <div class="blogs">
+        <br><h4 id="myInfo" class="user-name"><span id="user-name2"></span> &nbsp; &nbsp; <button onclick="edit()"><i class="fa fa-edit"></i></button></h4>
+     <div id="edit-inp" class="edit-inp">
+         <label for="">Enter a new username</label>
+      <input type="text" name="" id="user-name">
+      <button class="editBtn" onclick="changeUsername()">Save</button>
+      <button class="moreBtn" onclick="cancel()">Cancel</button>
+     </div>
+        <div class="profile-page">
+          <img id="preview" src="../images/user.jpg" alt="">
+      </div>
+
+      <br><br><div class="btns-act-cont">
+          <input style="display: none;" id="up" type="file" accept="image/*" onchange="previewImage(event)">
+          <button class="editBtn" onclick="upload()">Edit Profile</button> &nbsp;
+          <button class="editBtn saveBtn" onclick="chnageProfilePage()">Save Profile</button> &nbsp;
+          <button class="editBtn cancelBtn" onclick="cancelProfile()" style="background-color: crimson;color: white;display: none;">Cancel</button> &nbsp;
+      <button class="moreBtn remBtn" onclick="removeFile()" style="background-color: crimson;color: white;">Remove Profile</button>
+      </div>
+
+   <div style="text-align: center;margin-bottom: 60px;">
+      <span onclick="toggleChangePassword()" class="change-pass">Change Password</span>
+   </div>
+
+      </div>
+
+      <p style="display: none;" id="id"></p>
+
+      <div style="width: 45%;margin: auto;display: none;" id="passForm">
+        <div style="margin-bottom: 10px;">
+            <label for="">Current Password</label>
+        <input type="password" name="" id="currPass">
+        </div>
+
+        <div id="currError" style="margin-bottom: 20px;display: none;">
+            <p style="color: crimson;">Incorrect Current Password</p>
+         </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="">New Password</label>
+        <input type="password" name="" id="newPass">
+        </div>
+
+        <div id="valError" style="margin-bottom: 20px;display: none;">
+           <p  style="text-align: center;color: crimson;">Password must be at least 6 characters long</p>
+        </div>
+
+        <div style="margin-bottom: 50px;text-align: center;">
+          <button onclick="changePassword()" class="ch-btn-pass">Change Password</button>
+        </div>
+
+      </div>
+      <div id="alert" class="alert alert22"><p>Password Changed Successfully!</p></div>
+</div>
+      </div>
+
+      <script>
+          
+function upload(){
+    document.getElementById("up").click()
+}
+
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+
+            const previewImage = e => {
+      const reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = () => {
+         const preview = document.getElementById('preview');
+         preview.src = reader.result;
+         document.getElementsByClassName("saveBtn")[0].style.display = "initial";
+    document.getElementsByClassName("cancelBtn")[0].style.display = "initial";
+    document.getElementsByClassName("remBtn")[0].style.display = "none";
+      };
+   };
+
+   function cancelProfile(){
+    document.getElementsByClassName("saveBtn")[0].style.display = "none";
+    document.getElementsByClassName("cancelBtn")[0].style.display = "none";
+    document.getElementsByClassName("remBtn")[0].style.display = "initial";
+    getUser();
+   }
+
+   function edit(){
+       document.getElementById("myInfo").style.display="none"
+       document.getElementById("edit-inp").style.display = "block"
+   }
+
+   function cancel(){
+       document.getElementById("edit-inp").style.display = "none"
+       document.getElementById("myInfo").style.display="block"
+   }
+
+   function changeUsername(){
+      let name = document.getElementById("user-name").value;
+      let id = document.getElementById("id").innerHTML;
+      let token = localStorage.getItem("token");
+
+      if(name.length>3){
+        fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/", {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token
+                },
+                body: JSON.stringify({username: name})
+            }).then((res) => res)
+            .then((data) =>{
+            console.log(data)
+            getUser();
+            cancel();
+            isLogged();
+            });
+      }else{
+          alert("Username must be at least 4 characters long");
+      }
+   }
+
+   function chnageProfilePage(){
+       let img = document.getElementById('preview').src;
+       let file = localStorage.getItem("file");
+       let token = localStorage.getItem("token");
+       let id = document.getElementById("id").innerHTML;
+
+       if(img != file){
+
+        let CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/duldhdjsj/image/upload';
+
+let data = {
+            "file": img,
+            "upload_preset": "s1ef0r8m",
+        }
+
+fetch(CLOUDINARY_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then((res) => res.json())
+        .then((data) =>{
+            fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/", {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token
+                },
+                body: JSON.stringify({profileImage: {
+                    public_id: data?.public_id,
+                    url: data?.url
+                }})
+            }).then((res) => res)
+            .then((data) =>{
+            console.log(data)
+            getUser();
+            cancelProfile();
+    isLogged();
+            });
+
+        });
+         
+            return ;
+       }else{
+           cancelProfile();
+           getUser();
+           return ;
+       }
+   }
+
+   function removeFile(){
+    let id = document.getElementById("id").innerHTML;
+    let token = localStorage.getItem("token");
+
+    fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/", {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token
+                },
+                body: JSON.stringify({profileImage: {
+                    public_id: null,
+                    url: null
+                }})
+            }).then((res) => res)
+            .then((data) =>{
+            console.log(data)
+            getUser();
+            cancelProfile();
+            });
+   }
+
+   function getUser(){
+    let token = localStorage.getItem("token");
+  if(token){
+    fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/info/loggedinuser", {
+      method: 'GET',
+      headers: {
+        'Authorization': token
+      }
+    })
+    .then((res) => res.json())  
+      .then((user) =>{
+      document.getElementById("id").innerHTML = user._id;
+      document.getElementById("user-name").value = user?.username;
+      document.getElementById("user-name2").innerHTML = user?.username;
+      localStorage.setItem("file", user?.profileImage?.url)
+      if(user?.profileImage?.url){
+        document.getElementById('preview').src = user?.profileImage?.url;
+        document.getElementById("user-o-p").src = user?.profileImage?.url;
+      }else{
+        document.getElementById('preview').src = "../images/user.jpg" 
+        document.getElementById("user-o-p").src =  "../images/user.jpg";
+      }
+      });
+      return ;
+  }else{
+     return window.location = "./index.html";
+  }
+   }
+
+   window.onload = ()=>{
+    getUser();
+    isLogged();
+   }
+
+   function changePassword(){
+       let pass = document.getElementById("newPass").value;
+       let currPass = document.getElementById("currPass").value;
+
+       if(currPass.length == 0){
+           alert("Current Password is required");
+           return ;
+       }
+
+       if(pass.length<6){
+           document.getElementById("valError").style.display = "block";
+           return ;
+       }
+       document.getElementById("valError").style.display = "none";
+
+       let id = document.getElementById("id").innerHTML;
+      let token = localStorage.getItem("token");
+
+      document.getElementById("currError").style.display = "none";
+      fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/", {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token
+                },
+                body: JSON.stringify({
+                    currentPassword: currPass,
+                    password: pass
+                })
+            }).then((res) => res.json())
+            .then((data) =>{
+            if(data.error == "Current Password Is incorrect"){
+                return document.getElementById("currError").style.display = "block";
+            }
+            document.getElementById("alert").style.display = "block";
+            setTimeout(()=>{
+                document.getElementById("alert").style.display = "none"
+                document.getElementById("passForm").style.display = "none";
+              },2500)
+
+             document.getElementById("newPass").value = "";
+             document.getElementById("currPass").value = "";
+             return ;
+            });
+   }
+
+   function toggleChangePassword(){
+       document.getElementById("passForm").style.display = "block";
+   }
+
+   function logout(){
+       localStorage.removeItem("token");
+       return window.location = "./index.html";
+   }
+
+function isLogged(){
+
+ let token = localStorage.getItem("token")
+
+ if(token){
+
+  fetch("https://emmanueldufitumukiza.herokuapp.com/api/users/info/loggedinuser", {
+    method: 'GET',
+    headers: {
+        'Authorization': token
+    }
+  })
+  .then((res) => res.json())
+    .then((res) =>{
+      if(res.username){
+        document.getElementById("logSign").style.display = "none"
+   document.getElementById("profileauth").style.display = "flex"
+   document.getElementById("username-display").innerHTML  = res.username;
+   return ;
+      }else{
+        document.getElementById("logSign").style.display = "block"
+   document.getElementById("profileauth").style.display = "none"
+      }
+    });
+ }if(!token){
+  document.getElementById("logSign").style.display = "block"
+   document.getElementById("profileauth").style.display = "none"
+ }
+}
+
+      </script>
+
+
+</body>
+</html>
