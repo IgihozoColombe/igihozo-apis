@@ -54,7 +54,7 @@
         "tags": [
           "User"
         ],
-        "description": "",
+        "description": "E",
         "parameters": [
           {
             "name": "obj",
@@ -84,7 +84,7 @@
         "tags": [
           "User"
         ],
-        "description": "",
+        "description": "Change user password",
         "parameters": [
           {
             "name": "obj",
@@ -118,7 +118,7 @@
         "tags": [
           "user"
         ],
-        "description": "",
+        "description": "Update a user",
         "parameters": [
           {
             "name": "obj",
