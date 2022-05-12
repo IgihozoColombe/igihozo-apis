@@ -31,6 +31,7 @@
         "tags": [
           "User"
         ],
+        "summary": "user login",
         "description": "user login",
         "parameters": [
           {
@@ -54,6 +55,7 @@
         "tags": [
           "User"
         ],
+        "summary": "Register user",
         "description": "Register user",
         "parameters": [
           {
@@ -84,6 +86,7 @@
         "tags": [
           "User"
         ],
+        "summary": "Change user password",
         "description": "Change user password",
         "parameters": [
           {
@@ -118,6 +121,7 @@
         "tags": [
           "user"
         ],
+        "summary": "Update user",
         "description": "Update a user",
         "parameters": [
           {
@@ -152,6 +156,7 @@
         "tags": [
           "User"
         ],
+        "summary": "Get all users",
         "description": "Get all users",
         "responses": {
           "200": {
@@ -178,6 +183,7 @@
         "tags": [
           "Article"
         ],
+        "summary": "Get all blogs",
         "description": "Get all blogs",
         "responses": {
           "200": {
@@ -197,6 +203,7 @@
         "tags": [
           "Article"
         ],
+        "summary": "Post a new blog",
         "description": "post a new blog",
         "consumes": [
           "application/json"
@@ -256,6 +263,7 @@
         "tags": [
           "Article"
         ],
+        "summary": "Update blog",
         "description": "should update a blog",
        
           "parameters": [
@@ -322,6 +330,7 @@
         "tags": [
           "Article"
         ],
+        "summary": "Get all blogs",
         "description": "Get all blogs",
         "parameters": [
           {
@@ -352,6 +361,7 @@
         "tags": [
           "Article"
         ],
+        "summary": "Delete a blog",
         "description": "Delete a blog",
         "parameters": [
           {
@@ -384,6 +394,7 @@
         "tags": [
           "User"
         ],
+        "summary": "Get all qeries",
         "description": "Get all qeries",
         "responses": {
           "200": {
@@ -406,6 +417,7 @@
         "tags": [
           "Contacts"
         ],
+        "summary": "Create a new query",
         "description": "Create a new query",
         "parameters": [
           {
@@ -435,6 +447,7 @@
         "tags": [
           "Article"
         ],
+        "summary": "Add a comment",
         "description": "",
         "parameters": [
           {
@@ -475,6 +488,7 @@
         "tags":[
           "Article"
         ],
+        "summary": "Like a blog",
         "parameters":[
           {
             "name":"id",
@@ -506,6 +520,7 @@
         "tags":[
           "Article"
         ],
+        "summary": "unlike the blog",
         "parameters":[
           {
             "name":"id",
