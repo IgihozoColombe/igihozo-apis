@@ -31,7 +31,7 @@
         "tags": [
           "User"
         ],
-        "description": "",
+        "description": "user login",
         "parameters": [
           {
             "name": "obj",
@@ -54,7 +54,7 @@
         "tags": [
           "User"
         ],
-        "description": "E",
+        "description": "Register user",
         "parameters": [
           {
             "name": "obj",
@@ -152,7 +152,7 @@
         "tags": [
           "User"
         ],
-        "description": "",
+        "description": "Get all users",
         "responses": {
           "200": {
             "description": "Retrieved"
@@ -178,7 +178,7 @@
         "tags": [
           "Article"
         ],
-        "description": "",
+        "description": "Get all blogs",
         "responses": {
           "200": {
             "description": "Query ok"
@@ -197,7 +197,7 @@
         "tags": [
           "Article"
         ],
-        "description": "",
+        "description": "post a new blog",
         "consumes": [
           "application/json"
         ],
@@ -256,7 +256,7 @@
         "tags": [
           "Article"
         ],
-        "description": "",
+        "description": "should update a blog",
        
           "parameters": [
             {
@@ -322,7 +322,7 @@
         "tags": [
           "Article"
         ],
-        "description": "",
+        "description": "Get all blogs",
         "parameters": [
           {
             "name": "id",
@@ -352,7 +352,7 @@
         "tags": [
           "Article"
         ],
-        "description": "",
+        "description": "Delete a blog",
         "parameters": [
           {
             "name": "id",
@@ -384,7 +384,7 @@
         "tags": [
           "User"
         ],
-        "description": "",
+        "description": "Get all qeries",
         "responses": {
           "200": {
             "description": "Retrieved"
@@ -406,7 +406,7 @@
         "tags": [
           "Contacts"
         ],
-        "description": "",
+        "description": "Create a new query",
         "parameters": [
           {
             "name": "obj",
