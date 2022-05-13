@@ -1088,12 +1088,7 @@ color: white;
     padding-top: 20px;
 }
 
-.first-img{
-    /* background-image: url("../images/feza.png");
-    width: 80%; */
-    /* height: 170px !important; */
-    /* background-size: cover; */
-}
+
 }
 
 @media screen and (max-width: 570px){
